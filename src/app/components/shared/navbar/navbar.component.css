@@ -1,0 +1,19 @@
+
+
+.navbar-app{
+    background-color: #0C2D48;
+}
+
+.navbar-style{
+    justify-content: center;
+}
+
+.navbar.center .navbar-inner {
+    text-align: center;
+}
+
+.navbar.center .navbar-inner .nav {
+    display:inline-block;
+    float: none;
+    vertical-align: top;
+}
