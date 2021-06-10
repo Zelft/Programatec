@@ -1,19 +1,161 @@
 
+.navy{
+    font-family: 'Gottam Rounded', sans-serif;
+    font-size: 22px;
+    color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: bold;
+}
+
+.logoFont{
+    font-family: 'Monoton', cursive;
+    font-size:xx-large;
+}
+
+.header{
+    margin-top: 20x;
+    margin-bottom: 20px;
+}
+.wrapper{
+    margin: 25px auto;
+    width: 1000px;
+    position: relative;
+}
 
 .navbar-app{
     background-color: #0C2D48;
 }
 
-.navbar-style{
-    justify-content: center;
-}
+@media only screen and (max-width: 360px) {
+    
+  }
+/*
+*
+*/
 
-.navbar.center .navbar-inner {
+
+/* NAVIGATION */
+
+  nav ul {
+    list-style: none;
     text-align: center;
-}
+  }
+  nav ul li {
+    display: inline-block;
+  }
 
-.navbar.center .navbar-inner .nav {
-    display:inline-block;
-    float: none;
-    vertical-align: top;
-}
+  nav ul li a,
+  nav ul li a:after,
+  nav ul li a:before {
+    transition: all .5s;
+  }
+  nav ul li a:hover {
+    background-color: #B1D4E0;
+    border-radius: 5px;
+    
+  }
+  
+  
+  /* Circle */
+  nav.circle ul li a {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  nav.circle ul li a:after {
+    display: block;
+    position: absolute;
+    margin: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    content: '.';
+    color: transparent;
+    width: 1px;
+    height: 1px;
+    border-radius: 50%;
+    background: transparent;
+  }
+  nav.circle ul li a:hover:after {
+    -webkit-animation: circle 1.5s ease-in forwards;
+  }
+  
+  /* SHIFT */
+  nav.shift ul li a {
+    position:relative;
+    z-index: 1;
+  }
+  nav.shift ul li a:hover {
+    color: #91640F;
+  }
+  nav.shift ul li a:after {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    width: 100%;
+    height: 1px;
+    content: '.';
+    color: transparent;
+    background: #F1C40F;
+    visibility: none;
+    opacity: 0;
+    z-index: -1;
+  }
+  nav.shift ul li a:hover:after {
+    opacity: 1;
+    visibility: visible;
+    height: 100%;
+  }
+  
+  
+  
+  /* Keyframes */
+  @-webkit-keyframes fill {
+    0% {
+      width: 0%;
+      height: 1px;
+    }
+    50% {
+      width: 100%;
+      height: 1px;
+    }
+    100% {
+      width: 100%;
+      height: 100%;
+      background: #333;
+    }
+  }
+  
+  /* Keyframes */
+  @-webkit-keyframes circle {
+    0% {
+      width: 1px;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      margin: auto;
+      height: 1px;
+      z-index: -1;
+      background: #eee;
+      border-radius: 100%;
+    }
+    100% {
+      background: #aaa;
+      height: 5000%;
+      width: 5000%;
+      z-index: -1;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      border-radius: 0;
+    }
+  }
