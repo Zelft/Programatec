@@ -1,0 +1,22 @@
+
+
+.recentPosts{
+    border-color: #2E8BC0;
+    background: #B1D4E0;
+}
+
+.titleCard{
+    
+    font-family: 'Gottam Rounded', sans-serif;
+    font-size: x-large;
+
+}
+
+.newExercise{
+    width: 50%;
+    background: #2E8BC0;
+}
+
+.searchExercises{
+    width: 125%;
+}
