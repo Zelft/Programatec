@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
+import { FirestoreService } from 'src/app/services/firestore/firestore.service';
+import {AngularFirestore} from 'angularfire2/firestore';
+import {Observable} from 'rxjs/Observable';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -8,10 +10,19 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   isAdmin : boolean = true;
+  items :  Observable<any[]>;
+  ejercicios : any = [];
 
-  constructor() { }
+  constructor( private db : AngularFirestore) {
+    this.items = this.db.collection('ejercicios').valueChanges();
+   }
 
   ngOnInit(): void {
+    
   }
 
+  loadJsonPayload () : void{
+    console.log(this.items);
+  }
 }
+
