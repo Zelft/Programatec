@@ -8,21 +8,21 @@ export class FirestoreService {
   constructor(
     private firestore: AngularFirestore
   ) {}
-  //Crea un nuevo gato
-  public createCat(data: {nombre: string, url: string}) {
+  //Crea un nuevo ejercicio
+  public createEjercicio(data: {call: string, creator: string, code : string, examples : any, solution : any, level :string, created: string, name : string, section : string, details : string}) {
     return this.firestore.collection('ejercicios').add(data);
   }
-  //Obtiene un gato
+  //Obtiene un ejercicio
   public getEjercicio(documentId: string) {
     return this.firestore.collection('ejercicios').doc(documentId).snapshotChanges();
   }
-  //Obtiene todos los gatos
-  public getCats() {
+  //Obtiene todos los ejercicios
+  public getEjercicios() {
     
     return this.firestore.collection('ejercicios').snapshotChanges();
   }
-  //Actualiza un gato
-  public updateCat(documentId: string, data: any) {
-    return this.firestore.collection('cats').doc(documentId).set(data);
+  //Actualiza un ejercicio
+  public updateEjercicio(documentId: string, data: any) {
+    return this.firestore.collection('ejercicios').doc(documentId).set(data);
   }
 }

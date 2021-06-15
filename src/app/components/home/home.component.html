@@ -9,28 +9,73 @@
         </div>
         <div class="row">
             <div class="col">
-                <button *ngIf="isAdmin" type="button" (click) = "loadJsonPayload()" class="btn btn-primary newExercise ml-3">Añadir nuevo!</button>
+                <button *ngIf="isAdmin" type="button" (click) = "getFirebaseEjercicios()" class="btn btn-primary newExercise ml-3">Añadir nuevo!</button>
             </div>
             <div class="col">
                 <div class="input-group">
                     <div class="form-outline">
                       <input type="search" id="form1"  placeholder="Busca un ejercicio" class="form-control searchExercises" />
                     </div>
-                    <button type="button" class="btn btn-primary ml-5">
+                    <button type="button" class="btn btn-primary ml-4">
                       <i class="fas fa-search"></i>
                     </button>
                   </div>
             </div>
         </div>
 
-      </div>
-</div>
-<div class="col-5">
-    <div class="card recentPosts">
-        <div class="card-body">
-          This is some text within a card body.
+        <div class="row  divEjercicios ">
+          <div *ngFor = "let ejercicio of ejercicios" class="card cardEjercicio">
+            <div class="card-body iconLogoExercise">
+              <div class="row ml-0 mr-0">
+              <div class="col-2 iconExercise">
+               <img class="rocket w-75" [src]="getIcon(ejercicio)" alt="">
+              </div>
+              <div class="col-8 iconExerciseInfo pb-1">
+                <div class="row-2 ">
+                  <label class="exerciseTex" for="">{{ejercicio.data.name}}  | {{ejercicio.data.section}}</label>
+                </div>
+                <div  class="row-10  pt-3">
+                  
+                  <span class="p-1">235</span>
+                  <img src="assets\img\like.png" class="like" alt=""> 
+                  {{ejercicio.data.level}}
+                  <img src="assets\img\level.png" class="level" alt="">
+                  
+                  <!--<span style=" color: rgba(235, 200, 4, 0.76);">
+                    <i *ngFor="let star of positiveStars" class="fas fa-star "></i>
+                  </span>
+                  <span style=" color:rgb(177, 174, 174)">
+                    <i *ngFor="let star of negativeStars" class="fas fa-star "></i>
+                  </span> -->
+                </div>             
+              </div>
+              <div class="col-2 adminInfo ml-0">
+                <img class="adminPhoto"   [src]= "getImage(ejercicio)" alt="">
+                <p class="text-admin">{{ejercicio.data.creator}}</p>
+              </div>
+                 
+            </div>
+            </div>
+          </div>
         </div>
+
       </div>
 </div>
+  <div class="col-5 ">
+    <div class="card latestPosts" >
+    <div class="card-header  latestPostText">
+    Últimos Ejercicios
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item" *ngFor = "let ejercicio of ejercicios.slice(0,10)">
+      <i class="fab fa-codepen mr-1"> </i>
+      {{ ejercicio.data.name }} |
+      {{ejercicio.data.created}}
+    </li>
+  </ul>
 </div>
+
 </div>
+</div>  
+</div>
+
