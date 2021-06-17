@@ -50,7 +50,7 @@
     padding: 4%;
 }
 .like{
-    width: 5%;
+    width: 100%;
     padding-bottom: 0.5%;
     margin-right: 1%;
 }
@@ -76,11 +76,32 @@
 }
 
 .latestPosts{
-    background: #B1D4E0;
+    
+    background: #2E8BC0;
 }
 .latestPostText{
     color: black;
     font-size: large;
     font-weight: bold;
     text-align: center;
+}
+
+.likeButton{
+    padding: 0;
+    margin: 0;
+    margin-left: 1%;
+    margin-right: 1%;
+    border: none;
+    width: 5%;
+    background: none;
+}
+
+.compound:hover {
+    border-color: #2E8BC0;
+    border-style: groove;
+    background: #B1D4E0; 
+  }
+
+.fixedContent{
+    margin-top: 12%;
 }

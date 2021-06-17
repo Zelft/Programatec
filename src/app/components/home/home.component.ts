@@ -13,10 +13,11 @@ export class HomeComponent implements OnInit {
   isAdmin : boolean = true;
   ejercicios: any[] = [];
   latestPosts :string [] = []; 
+  topLiked : any[] = [];
 
   constructor( private db : FirestoreService, private datePipe: DatePipe) {
     
-   }
+  }
 
   ngOnInit(): void {
     this.db.getEjercicios().subscribe((dataEjercicios) => {
@@ -26,15 +27,15 @@ export class HomeComponent implements OnInit {
           data: ejercicio.payload.doc.data()
         });
       })
-      this.loadLatestsPosts();
+      console.log(this.ejercicios);
+      this.getTopLikedPosts();
     });
  
   }
 
   getImage( ejercicio : any) : string{
     
-    let image = "assets/img/letters/png/"+ejercicio.data.creator[0] +".png";
-    //console.log(image);
+    let image = "assets/img/letters/png/"+ejercicio.data.creator[0].toUpperCase() +".png";
     return image;
   }
 
@@ -69,9 +70,19 @@ export class HomeComponent implements OnInit {
       return this.datePipe.transform(date,"yyyy-MM-dd");
     });
     //["yyyy-mm-dd", "yyyy-mm-dd","yyyy-mm-dd"]
-
-
   }
-  
+
+  likeExercise(ejercicio : any ){
+    ejercicio.data.likes +=1;
+    this.db.updateEjercicio(ejercicio.id, ejercicio.data);
+  }
+
+  getTopLikedPosts(){
+    this.topLiked = [...this.ejercicios];
+    this.topLiked.sort(function (a, b) {
+      return a.data.likes - b.data.likes;
+    });
+    this.topLiked = this.topLiked.reverse().slice(0,10);
+  }
 }
 

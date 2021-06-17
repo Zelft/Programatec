@@ -1,15 +1,13 @@
 <div class="container">
-
-
-<div class="row ">
+<div class="row fixedContent">
 <div class="col-7 ">
     <div class="card border pb-3">
         <div class="card-body">
-          <h2 class="titleCard">Ejercicios de Programación</h2>
+          <h2 class="titleCard text-center">Ejercicios de Programación</h2>
         </div>
         <div class="row">
             <div class="col">
-                <button *ngIf="isAdmin" type="button" (click) = "getFirebaseEjercicios()" class="btn btn-primary newExercise ml-3">Añadir nuevo!</button>
+                <button *ngIf="isAdmin" type="button" class="btn btn-primary border newExercise ml-3">Añadir nuevo!</button>
             </div>
             <div class="col">
                 <div class="input-group">
@@ -23,10 +21,10 @@
             </div>
         </div>
 
-        <div class="row  divEjercicios ">
-          <div *ngFor = "let ejercicio of ejercicios" class="card cardEjercicio">
-            <div class="card-body iconLogoExercise">
-              <div class="row ml-0 mr-0">
+        <div class="row  divEjercicios " >
+          <div *ngFor = "let ejercicio of ejercicios" class="card cardEjercicio ">
+            <div class="card-body iconLogoExercise compound">
+              <div class="row ml-0 mr-0 ">
               <div class="col-2 iconExercise">
                <img class="rocket w-75" [src]="getIcon(ejercicio)" alt="">
               </div>
@@ -35,23 +33,19 @@
                   <label class="exerciseTex" for="">{{ejercicio.data.name}}  | {{ejercicio.data.section}}</label>
                 </div>
                 <div  class="row-10  pt-3">
+                  <span class="p-1">{{ejercicio.data.likes}}</span>
+                  <button class="likeButton" (click)="likeExercise(ejercicio)">
+                    <img src="assets\img\like.png" class="like" alt="">     
+                  </button>
                   
-                  <span class="p-1">235</span>
-                  <img src="assets\img\like.png" class="like" alt=""> 
                   {{ejercicio.data.level}}
                   <img src="assets\img\level.png" class="level" alt="">
                   
-                  <!--<span style=" color: rgba(235, 200, 4, 0.76);">
-                    <i *ngFor="let star of positiveStars" class="fas fa-star "></i>
-                  </span>
-                  <span style=" color:rgb(177, 174, 174)">
-                    <i *ngFor="let star of negativeStars" class="fas fa-star "></i>
-                  </span> -->
                 </div>             
               </div>
               <div class="col-2 adminInfo ml-0">
-                <img class="adminPhoto"   [src]= "getImage(ejercicio)" alt="">
-                <p class="text-admin">{{ejercicio.data.creator}}</p>
+                <img class="adminPhoto "   [src]= "getImage(ejercicio)" alt="">
+                <p class="text-admin ">{{ejercicio.data.creator}}</p>
               </div>
                  
             </div>
@@ -64,13 +58,18 @@
   <div class="col-5 ">
     <div class="card latestPosts" >
     <div class="card-header  latestPostText">
-    Últimos Ejercicios
+    Top Ejercicios
   </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item" *ngFor = "let ejercicio of ejercicios.slice(0,10)">
-      <i class="fab fa-codepen mr-1"> </i>
-      {{ ejercicio.data.name }} |
-      {{ejercicio.data.created}}
+  <ul class="list-group list-group-flush ">
+    <li class="list-group-item compound topLiked" *ngFor = "let liked of topLiked">
+      <div class="d-flex justify-content-center ">
+      <i class="fab fa-codepen mr-2 pt-1 "> </i>
+      {{ liked.data.name }} |
+      {{liked.data.likes}}
+      <div class="likeButton">
+        <img src="assets\img\like.png" class="like topLikedEmoji" alt="">     
+      </div>
+    </div>
     </li>
   </ul>
 </div>

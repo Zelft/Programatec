@@ -10,13 +10,19 @@ import { ROUTES } from './app.routes';
 import { RouterModule } from '@angular/router';
 import { InicialPipe } from './pipes/inicial.pipe';
 import { DatePipe } from '@angular/common';
+import { FooterComponent } from './components/shared/footer/footer.component';
+import { CategoriasComponent } from './components/categorias/categorias.component';
+import { EjercicioComponent } from './components/ejercicio/ejercicio.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    InicialPipe
+    InicialPipe,
+    FooterComponent,
+    CategoriasComponent,
+    EjercicioComponent
   ],
   imports: [
     BrowserModule,
