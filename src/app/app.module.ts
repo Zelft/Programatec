@@ -13,6 +13,9 @@ import { DatePipe } from '@angular/common';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { CategoriasComponent } from './components/categorias/categorias.component';
 import { EjercicioComponent } from './components/ejercicio/ejercicio.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +30,9 @@ import { EjercicioComponent } from './components/ejercicio/ejercicio.component';
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
-    RouterModule.forRoot(ROUTES, {useHash : true})
+    RouterModule.forRoot(ROUTES, {useHash : true}),
+    BrowserAnimationsModule,
+    MatPaginatorModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

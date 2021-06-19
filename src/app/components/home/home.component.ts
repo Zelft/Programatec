@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from 'src/app/services/firestore/firestore.service';
-import {AngularFirestore} from 'angularfire2/firestore';
-import {Observable} from 'rxjs/Observable';
 import { DatePipe } from '@angular/common';
+import { PageEvent } from '@angular/material/paginator';
+
+
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -14,6 +16,8 @@ export class HomeComponent implements OnInit {
   ejercicios: any[] = [];
   latestPosts :string [] = []; 
   topLiked : any[] = [];
+  pageSlice : any[] = [];
+  currentElementCounter : number;
 
   constructor( private db : FirestoreService, private datePipe: DatePipe) {
     
@@ -29,6 +33,8 @@ export class HomeComponent implements OnInit {
       })
       console.log(this.ejercicios);
       this.getTopLikedPosts();
+      this.pageSlice = this.ejercicios.slice(0,5);
+      this.currentElementCounter = dataEjercicios.length;
     });
  
   }
@@ -84,5 +90,22 @@ export class HomeComponent implements OnInit {
     });
     this.topLiked = this.topLiked.reverse().slice(0,10);
   }
+
+  onPageChange(event : PageEvent){
+    const startIndex = event.pageIndex * event.pageSize;
+    let endIndex = startIndex + event.pageSize;
+    if(endIndex > this.ejercicios.length){
+      endIndex = this.ejercicios.length
+    }
+    this.pageSlice = this.ejercicios.slice(startIndex,endIndex);
+  }
+
+  buscar(termino : string){
+ 
+    const result = this.ejercicios.filter(word => word.data.call.includes(termino));
+    this.pageSlice = result.slice(0,5);
+    this.currentElementCounter = result.length;
+  }
+
 }
 
