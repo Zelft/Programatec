@@ -6,10 +6,8 @@
 }
 
 .titleCard{
-    
     font-family: 'Gottam Rounded', sans-serif;
     font-size: x-large;
-
 }
 
 .newExercise{
@@ -100,10 +98,6 @@
     border-color: #2E8BC0;
     border-style: groove;
     background: #B1D4E0; 
-  }
-
-.fixedContent{
-    margin-top: 12%;
 }
 
 .customButton{

@@ -1,0 +1,39 @@
+.fixedContent{
+    margin-top: 8%;
+    margin-left: 3%;
+}
+
+.title-exercise{
+    font-family: 'Gottam Rounded', sans-serif;
+    font-size: x-large;
+}
+
+.title-cards{
+    font-family: 'Gottam Rounded', sans-serif;
+    font-size: 150%;
+    font-weight: bold;
+}
+
+.card-header-color{
+    background-color:#2E8BC0;
+}
+
+.exercise-details{
+    font-size: 110%;
+}
+
+.examples-title{
+    font-weight:500;  
+}
+
+.examples-header-color{
+    
+   
+    background-color:#2E8BC0;
+}
+
+.card-details{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}

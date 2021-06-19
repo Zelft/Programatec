@@ -103,7 +103,7 @@ export class HomeComponent implements OnInit {
 
   buscar(termino: string) {
 
-    const result = this.ejercicios.filter(word => word.data.call.includes(termino));
+    const result = this.ejercicios.filter(word => (word.data.call.includes(termino)) || (word.data.section.includes(termino)));
     this.pageSlice = result.slice(0, 5);
     this.currentElementCounter = result.length;
   }
