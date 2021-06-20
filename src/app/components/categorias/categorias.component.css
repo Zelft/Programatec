@@ -1,3 +1,37 @@
 .fixedContent{
-    margin-top: 12%;
+    margin-top: 8%;
+    margin-left: 3%;
+}
+
+.title-categories{
+    font-family: 'Gottam Rounded', sans-serif;
+    font-size: x-large;
+}
+
+.title-cards{
+    font-family: 'Gottam Rounded', sans-serif;
+    font-size: 130%;
+    font-weight: 500;
+}
+
+.card-header-color{
+    background-color:#576f7c;
+}
+
+.images{
+    width: 220%;
+    padding: 0%;
+    margin: 0;
+}
+
+.padding-categories{
+    padding-left: 8%;
+}
+
+.categories-details{
+    font-size: 120%;
+}
+.custom-button{
+    padding: 1%;
+    margin: 0%;
 }

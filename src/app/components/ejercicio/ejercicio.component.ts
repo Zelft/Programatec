@@ -18,6 +18,9 @@ export class EjercicioComponent implements OnInit {
     })
   }
 
+  downloadCode() {
+  }
+
   ngOnInit(): void {
 
 

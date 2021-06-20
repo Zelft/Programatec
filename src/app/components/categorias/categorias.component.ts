@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { FirestoreService } from 'src/app/services/firestore/firestore.service';
 
 @Component({
   selector: 'app-categorias',
@@ -8,14 +9,41 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class CategoriasComponent implements OnInit {
-
-
-  constructor(private router : ActivatedRoute) { }
+  constructor(private router: ActivatedRoute, private db: FirestoreService) { }
+  arboles: any[] = [];
+  numericos: any[] = [];
+  listas: any[] = [];
+  condicionales: any[] = [];
 
   ngOnInit(): void {
+    this.dividirEnCategorias()
+  }
+
+  dividirEnCategorias() {
+    this.db.getEjercicios().subscribe((dataEjercicios) => {
+      dataEjercicios.forEach((ejercicio: any) => {
+        if (ejercicio.payload.doc.data().section == "Condicionales") {
+          this.condicionales.push(ejercicio.payload.doc.data());
+        }
+        else if (ejercicio.payload.doc.data().section == "Listas") {
+          this.listas.push(ejercicio.payload.doc.data());
+        }
+        else if (ejercicio.payload.doc.data().section == "Algoritmos numéricos") {
+          this.numericos.push(ejercicio.payload.doc.data());
+        }
+        else {
+          this.arboles.push(ejercicio.payload.doc.data());
+        }
+      });
+    })
+  };
+
+  verEjerciciosCategoria(categoria: string) {
+
   }
 
 }
+
 
 
 export interface Card {

@@ -1,0 +1,99 @@
+<div class="fixedContent">
+    <div class="container">
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-10">
+                <h2 class="title-categories">Categorías</h2>
+
+                <div class="card" style="width:100%">
+                    <button class="btn custom-button " (click)="verEjerciciosCategoria('listas')">
+                        <div class="card-header pt-1 pb-1 title-cards card-header-color text-center text-white">
+                            Listas
+                        </div>
+                    </button>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-1">
+                                <img src="assets/img/AI/png/listas.png" class="images" alt="listas">
+                            </div>
+                            <div class="col-11 padding-categories">
+                                <p class="categories-details"><b>Descripción:</b> En esta categoría se encuentran los
+                                    ejercicios de listas, estás son estructuras para almacenar datos de forma
+                                    dinámica.
+                                </p>
+                                <p class="categories-details"><b>Cantidad de ejercicios:</b> {{listas.length}}</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="card mt-2" style="width:100%">
+                    <button class="btn custom-button " (click)="verEjerciciosCategoria('condicionales')">
+                        <div class="card-header pt-1 pb-1 title-cards card-header-color text-center text-white">
+                            Condicionales
+                        </div>
+                    </button>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-1">
+                                <img src="assets/img/AI/png/condicionales.png" class="images" alt="condicionales">
+                            </div>
+                            <div class="col-11 padding-categories">
+                                <p class="categories-details"><b>Descripción:</b> En esta categoría se encuentran
+                                    los ejercicios de condicionales, estos son segmentos de código donde se puede
+                                    condicionar según la situación del programa.</p>
+                                <p class="categories-details"><b>Cantidad de ejercicios:</b> {{condicionales.length}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-2" style="width:100%">
+                    <button class="btn custom-button " (click)="verEjerciciosCategoria('numericos')">
+                        <div class="card-header pt-1 pb-1 title-cards card-header-color text-center text-white">
+                            Algoritmos numéricos
+                        </div>
+                    </button>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-1">
+                                <img src="assets/img/AI/png/numericos.png" class="images" alt="numericos">
+                            </div>
+                            <div class="col-11 padding-categories">
+                                <p class="categories-details"><b>Descripción:</b> En esta categoría se encuentran los
+                                    ejercicios de algoritmos numéricos, los cuales consisten en todos aquellos
+                                    ejercicios en los que se basan en operaciones que involucran números.</p>
+                                <p class="categories-details"><b>Cantidad de ejercicios:</b> {{numericos.length}}
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="card mt-2" style="width:100%">
+                    <button class="btn custom-button " (click)="verEjerciciosCategoria('arboles')">
+                        <div class="card-header  pt-1 pb-1 title-cards card-header-color text-center text-white">
+                            Árboles
+                        </div>
+                    </button>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-1">
+                                <img src="assets/img/AI/png/arboles.png" class="images" alt="condicionales">
+                            </div>
+                            <div class="col-11 padding-categories">
+                                <p class="categories-details"><b>Descripción:</b> En esta categoría estos se encuentran
+                                    los ejercicios de árboles, estos ejercicios son similares a las listas, sin embargo,
+                                    la manera de almacenarse es distinta según el tipo.</p>
+                                <p class="categories-details"><b>Cantidad de ejercicios:</b> {{arboles.length}}
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-1"></div>
+        </div>
+    </div>
+</div>
