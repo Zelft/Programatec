@@ -108,7 +108,6 @@ export class HomeComponent implements OnInit {
   }
 
   verEjercicio(ejercicio: any) {
-    let idx = this.ejercicios.indexOf(ejercicio);
     this.router.navigate(['/ejercicio', ejercicio.id])
   }
 

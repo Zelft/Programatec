@@ -15,6 +15,7 @@ import { CategoriasComponent } from './components/categorias/categorias.componen
 import { EjercicioComponent } from './components/ejercicio/ejercicio.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { CategoriaComponent } from './components/categoria/categoria.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     InicialPipe,
     FooterComponent,
     CategoriasComponent,
-    EjercicioComponent
+    EjercicioComponent,
+    CategoriaComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FirestoreService } from 'src/app/services/firestore/firestore.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { FirestoreService } from 'src/app/services/firestore/firestore.service';
 })
 
 export class CategoriasComponent implements OnInit {
-  constructor(private router: ActivatedRoute, private db: FirestoreService) { }
+  constructor(private router: ActivatedRoute, private db: FirestoreService, private router2: Router) { }
   arboles: any[] = [];
   numericos: any[] = [];
   listas: any[] = [];
@@ -39,12 +39,9 @@ export class CategoriasComponent implements OnInit {
   };
 
   verEjerciciosCategoria(categoria: string) {
-
+    this.router2.navigate(['/categoria', categoria])
   }
-
 }
-
-
 
 export interface Card {
   title: string;

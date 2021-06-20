@@ -1,0 +1,42 @@
+<div class="fixed-content">
+    <div class="container">
+        <div>
+            <h1 class="title-categories"> Categoría de {{section}}</h1>
+            <div class="row">
+                <div *ngFor="let ejercicio of ejercicios" class="card cardEjercicio ">
+                    <div class="card-body iconLogoExercise compound">
+                        <div class="row ml-0 mr-0 ">
+                            <div class="col-2 iconExercise">
+                                <img class="rocket w-75 ml-2 mt-1" [src]="getIcon(ejercicio)" alt="">
+                            </div>
+                            <div class="col-8 iconExerciseInfo pb-1">
+                                <div class="row-2 mt-3">
+                                    <button class="btn customButton" (click)="verEjercicio(ejercicio)">
+                                        <label class="exerciseTex" for="">{{ejercicio.payload.doc.data().name}} |
+                                            {{ejercicio.payload.doc.data().section}}</label>
+                                    </button>
+                                    <p><b>Descripción: </b>{{ejercicio.payload.doc.data().details}}</p>
+                                </div>
+                                <div class="row-10 pt-1">
+                                    <span class="p-1">{{ejercicio.payload.doc.data().likes}}</span>
+                                    <button class="likeButton" (click)="likeExercise(ejercicio)">
+                                        <img src="assets\img\like.png" class="like" alt="">
+                                    </button>
+                                    {{ejercicio.payload.doc.data().level}}
+                                    <img src="assets\img\level.png" class="level" alt="">
+
+                                </div>
+                            </div>
+                            <div class="col-2 adminInfo iconExerciseInfo ml-0">
+                                <img class="adminPhoto mt-2 pt-2" [src]="getImage(ejercicio)" alt="">
+                                <p class="text-admin text-center mr-2 mt-2">
+                                    <b>{{ejercicio.payload.doc.data().creator}}</b>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
