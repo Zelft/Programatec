@@ -35,3 +35,10 @@
     margin: 0;
     width: 100%;
 }
+
+pre{ 
+    white-space:pre-wrap;
+    overflow: auto;
+    Word-break: break-Word;
+}
+

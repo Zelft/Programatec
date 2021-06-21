@@ -13,16 +13,24 @@ export class EjercicioComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private db: FirestoreService) {
     this.activatedRoute.params.subscribe(params => {
       this.db.getEjercicio(params.id).subscribe((dataEjercicio) => {
-        this.ejercicio = dataEjercicio.payload.data();
+        this.ejercicio = dataEjercicio;
       });
     })
   }
 
-  downloadCode() {
+  downloadCode(ejercicio: any) {
+
   }
 
   ngOnInit(): void {
 
-
   }
+
+  ejercicios: any = [
+    {
+      nombre: 'Ejemplo 1',
+      puntaje: 5,
+      id: 1,
+      code: "def sumaDigitosConSigno(num):\n\n    resultado = 0\n    while  num > 0 :\n        if num % 2 == 0:\n            resultado = resultado + num%10\n        else:\n            resultado = resultado - num%10\n        num = num\/\/10\n    return resultado"
+    }]
 }
