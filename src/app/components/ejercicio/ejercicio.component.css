@@ -42,3 +42,8 @@ pre{
     Word-break: break-Word;
 }
 
+span{
+    font-size: 80%;
+    font-weight:400; 
+}
+

@@ -23,7 +23,7 @@ export class CategoriaComponent implements OnInit {
       if (params.tipoCategoria == "listas") {
         this.db.getEjercicios().subscribe((dataEjercicios) => {
           dataEjercicios.forEach((ejercicio: any) => {
-            if (ejercicio.payload.doc.data().section == "Listas") {
+            if (ejercicio.payload.doc.data().section == "Listas, vectores y matrices") {
               this.ejercicios.push(ejercicio);
               this.section = this.ejercicios[0].payload.doc.data().section;
 

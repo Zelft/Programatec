@@ -25,7 +25,7 @@ export class CategoriasComponent implements OnInit {
         if (ejercicio.payload.doc.data().section == "Condicionales") {
           this.condicionales.push(ejercicio.payload.doc.data());
         }
-        else if (ejercicio.payload.doc.data().section == "Listas") {
+        else if (ejercicio.payload.doc.data().section == "Listas, vectores y matrices") {
           this.listas.push(ejercicio.payload.doc.data());
         }
         else if (ejercicio.payload.doc.data().section == "Algoritmos numéricos") {

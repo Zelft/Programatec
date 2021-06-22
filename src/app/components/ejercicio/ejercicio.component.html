@@ -31,6 +31,7 @@
                         Solución
                     </div>
                     <div class="card-body">
+                        <h2 class="card-title">Llamada: <span>{{ejercicio.payload.data().call}} </span></h2>
                         <h2 class="card-title">Entradas</h2>
                         <div *ngFor="let entrada of ejercicio.payload.data().solution.inputs">
                             <p class="card-text exercise-details mt-2"><b>{{entrada.name}}:</b> {{entrada.type}}</p>

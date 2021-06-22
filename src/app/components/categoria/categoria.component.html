@@ -1,7 +1,7 @@
 <div class="fixed-content">
     <div class="container">
         <div>
-            <h1 class="title-categories"> Categoría de {{section}}</h1>
+            <h1 class="title-categories"> Categoría de {{section | lowercase}}</h1>
             <div class="row">
                 <div *ngFor="let ejercicio of ejercicios" class="card cardEjercicio ">
                     <div class="card-body iconLogoExercise compound">
