@@ -1,0 +1,48 @@
+<div class="container fixedContent">
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="displayTable">
+                        <div class="displayTableCell">
+
+                            <div class="authBlock">
+                                <h3 class="titles">Registrarse</h3>
+
+                                <div class="formGroup">
+                                    <input type="email" class="form-control mb-2" placeholder="Correo electrónico"
+                                        #userEmail required>
+                                </div>
+
+                                <div class="formGroup">
+                                    <input type="password" class="form-control mb-2" placeholder="Contraseña" #userPwd
+                                        required>
+                                </div>
+
+                                <div class="formGroup">
+                                    <input type="button" class="btn btn-block btn-primary mb-2" value="Sign Up"
+                                        (click)="ngAuthService.SignUp(userEmail.value, userPwd.value)">
+                                </div>
+
+                                <div class="formGroup">
+                                    <button type="button" class="btn btn-block btn-danger"
+                                        (click)="ngAuthService.GoogleAuth()">
+                                        Continue with Google
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="redirectToLogin text-center mb-1 mt-3">
+                                <span>¿Ya está registrado? <span class="redirect"
+                                        routerLink="/sign-in">Ingresar</span></span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>

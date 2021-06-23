@@ -1,0 +1,32 @@
+<div class="container margins">
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="displayTable">
+                        <div class="displayTableCell">
+                            <div class="authBlock">
+                                <h3 class="titles">Gracias por registrarse</h3>
+                                <div class="formGroup" *ngIf="ngAuthService.userState as user">
+                                    <p class="text-center">Se ha enviado un correo de confirmación a
+                                        <strong>{{user.email}}</strong>.
+                                    </p>
+                                </div>
+
+                                <div class="formGroup">
+                                    <button type="button" class="btn btn-block btn-success"
+                                        (click)="ngAuthService.SendVerificationMail()">
+                                        Reenviar correo electrónico de verificación
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3"></div>
+    </div>
+
+</div>
