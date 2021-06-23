@@ -1,0 +1,51 @@
+<div class="container fixedContent">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-5">
+            <div class="card mt-5">
+                <div class="displayTable">
+                    <div class="displayTableCell">
+                        <div class="card-body">
+                            <div class="authBlock">
+                                <h3 class="title-sing-in">Ingresar</h3>
+                                <div class="formGroup">
+                                    <input type="text" class="form-control mb-2" placeholder="Correo" #userName
+                                        required>
+                                </div>
+
+                                <div class="formGroup">
+                                    <input type="password" class="form-control mb-2" placeholder="Contraseña"
+                                        #userPassword required>
+                                </div>
+
+                                <div class="formGroup">
+                                    <input type="button" class="btn btn-primary btn-block mb-2" value="Sign in"
+                                        (click)="ngAuthService.SignIn(userName.value, userPassword.value)">
+                                </div>
+
+                                <div class="formGroup">
+                                    <button type="button" class="btn btn-danger btn-block"
+                                        (click)="ngAuthService.GoogleAuth()">
+                                        Log in with Google
+                                    </button>
+                                </div>
+
+                                <div class="forgotPassword text-center mt-3">
+                                    <span routerLink="/forgot-password">¿Olvidó su contraseña?</span>
+                                </div>
+                            </div>
+
+                            <div class="redirectToLogin text-center mb-1 mt-1">
+                                <span>¿No está registrado?<span class="redirect" routerLink="/sign-up">
+                                        Registrarse</span></span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>
