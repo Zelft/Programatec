@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   latestPosts: string[] = [];
   topLiked: any[] = [];
   pageSlice: any[] = [];
+  sortedDates : any = [];
   currentElementCounter: number;
 
   constructor(private db: FirestoreService, private datePipe: DatePipe, private router: Router) {
@@ -36,6 +37,7 @@ export class HomeComponent implements OnInit {
       this.getTopLikedPosts();
       this.pageSlice = this.ejercicios.slice(0, 5);
       this.currentElementCounter = dataEjercicios.length;
+      this.orderDates();
     });
 
   }
@@ -53,7 +55,7 @@ export class HomeComponent implements OnInit {
       case "Algoritmos numéricos":
         imgPath = "assets/img/AI/png/numericos.png";
         break;
-      case "Listas":
+      case "Listas, vectores y matrices":
         imgPath = "assets/img/AI/png/listas.png";
         break;
       case "Condicionales":
@@ -109,6 +111,15 @@ export class HomeComponent implements OnInit {
 
   verEjercicio(ejercicio: any) {
     this.router.navigate(['/ejercicio', ejercicio.id])
+  }
+
+  orderDates (){
+    let modifiedDates = [...this.ejercicios];
+    for (let index = 0; index < this.ejercicios.length; index++){ 
+      modifiedDates[index].data.created = new Date(modifiedDates[index].data.created); 
+    }
+
+    this.sortedDates = modifiedDates.slice().sort((a, b) => b.data.created - a.data.created).slice(0,10);
   }
 
 

@@ -8,33 +8,33 @@
                         <div class="displayTableCell">
 
                             <div class="authBlock">
-                                <h3 class="titles">Registrarse</h3>
+                                <h3 class="titles text-center">Registrarse</h3>
 
                                 <div class="formGroup">
-                                    <input type="email" class="form-control mb-2" placeholder="Correo electrónico"
+                                    <input type="email" class="form-control mb-2 text-center" placeholder="Correo electrónico"
                                         #userEmail required>
                                 </div>
 
                                 <div class="formGroup">
-                                    <input type="password" class="form-control mb-2" placeholder="Contraseña" #userPwd
+                                    <input type="password" class="form-control mb-2 text-center" placeholder="Contraseña" #userPwd
                                         required>
                                 </div>
 
                                 <div class="formGroup">
-                                    <input type="button" class="btn btn-block btn-primary mb-2" value="Sign Up"
+                                    <input type="button" class="btn btn-block btn-primary mb-2" value="Ingresar"
                                         (click)="ngAuthService.SignUp(userEmail.value, userPwd.value)">
                                 </div>
 
                                 <div class="formGroup">
                                     <button type="button" class="btn btn-block btn-danger"
                                         (click)="ngAuthService.GoogleAuth()">
-                                        Continue with Google
+                                        Continuar con Google
                                     </button>
                                 </div>
                             </div>
 
-                            <div class="redirectToLogin text-center mb-1 mt-3">
-                                <span>¿Ya está registrado? <span class="redirect"
+                            <div class="redirectToLogin text-center mb-1 mt-3 underHover">
+                                <span>¿Ya está registrado? <span class="redirect "
                                         routerLink="/sign-in">Ingresar</span></span>
                             </div>
                         </div>

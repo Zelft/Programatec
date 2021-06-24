@@ -49,7 +49,7 @@ import { NgAuthService } from "./services/auth/ng-auth.service";
     MatPaginatorModule,
     AngularFireAuthModule,
     AngularFirestoreModule
-  ],
+    ],
   providers: [DatePipe, NgAuthService],
   bootstrap: [AppComponent]
 })

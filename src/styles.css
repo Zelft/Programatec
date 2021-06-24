@@ -6,3 +6,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .fixedContent{
     margin-top: 12%;
 }
+
+.underHover{
+    cursor: pointer;
+}
+
+.underHover :hover{
+    border-bottom: 2px solid  black;
+}

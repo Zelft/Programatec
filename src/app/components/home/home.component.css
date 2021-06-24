@@ -1,5 +1,5 @@
 .fixedContent{
-    margin-top: 12%;
+    margin-top: 8%;
     margin-left: 3%;
 }
 
@@ -26,8 +26,12 @@
     margin-top: 3%;
 }
 .cardEjercicio{
-    margin-right: 2.2%;
-    margin-left: 2.2%;
+    width: 97%;
+    margin-left: 1.6%;
+    padding-left: 0%;
+    margin-right: 3%;
+    padding-right: 0%;
+    
 }
 
 .iconExercise{

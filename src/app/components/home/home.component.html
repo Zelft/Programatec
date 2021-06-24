@@ -7,8 +7,6 @@
         </div>
         <div class="row">
           <div class="col">
-            <button *ngIf="isAdmin" type="button" class="btn latestPosts border newExercise ml-3 text-white">Añadir
-              nuevo!</button>
           </div>
           <div class="col">
             <div class="input-group">
@@ -63,22 +61,21 @@
     <div class="col-5 ">
       <div class="card latestPosts">
         <div class="card-header latestPostText text-white">
-          Top Ejercicios
+          Últimos Ejercicios 
         </div>
         <ul class="list-group list-group-flush ">
-          <li class="list-group-item compound topLiked" *ngFor="let liked of topLiked">
+          <li class="list-group-item compound topLiked" *ngFor="let sortedDate of sortedDates">
             <div class="d-flex justify-content-center ">
               <i class="fab fa-codepen mr-2 pt-1 "> </i>
-              {{ liked.data.name }} |
-              {{liked.data.likes}}
-              <div class="likeButton">
-                <img src="assets\img\like.png" class="like topLikedEmoji" alt="">
-              </div>
+              {{ sortedDate.data.name }} |
+              {{sortedDate.data.created | date: 'yyyy-MM-dd'}}
+     
             </div>
           </li>
         </ul>
       </div>
 
     </div>
+    
   </div>
 </div>

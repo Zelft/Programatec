@@ -22,7 +22,7 @@ export class FirestoreService {
     return this.firestore.collection('ejercicios').snapshotChanges();
   }
   //Actualiza un ejercicio
-  public updateEjercicio(documentId: string, data: any) {
+  public updateEjercicio(documentId: string, data : {call: string, creator: string, code : string, examples : any, solution : any, level :string, created: Date, name : string, section : string, details : string}) {
     return this.firestore.collection('ejercicios').doc(documentId).set(data);
   }
 }

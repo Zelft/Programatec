@@ -73,7 +73,7 @@ export class CategoriaComponent implements OnInit {
       case "Algoritmos numéricos":
         imgPath = "assets/img/AI/png/numericos.png";
         break;
-      case "Listas":
+      case "Listas, vectores y matrices":
         imgPath = "assets/img/AI/png/listas.png";
         break;
       case "Condicionales":

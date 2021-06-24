@@ -7,35 +7,35 @@
                     <div class="displayTableCell">
                         <div class="card-body">
                             <div class="authBlock">
-                                <h3 class="title-sing-in">Ingresar</h3>
+                                <h3 class="title-sing-in text-center">Ingresar</h3>
                                 <div class="formGroup">
-                                    <input type="text" class="form-control mb-2" placeholder="Correo" #userName
+                                    <input type="text" class="form-control mb-2 text-center" placeholder="Correo" #userName
                                         required>
                                 </div>
 
                                 <div class="formGroup">
-                                    <input type="password" class="form-control mb-2" placeholder="Contraseña"
+                                    <input type="password" class="form-control mb-2 text-center" placeholder="Contraseña"
                                         #userPassword required>
                                 </div>
 
                                 <div class="formGroup">
-                                    <input type="button" class="btn btn-primary btn-block mb-2" value="Sign in"
+                                    <input type="button" class="btn btn-primary btn-block mb-2" value="Ingresar"
                                         (click)="ngAuthService.SignIn(userName.value, userPassword.value)">
                                 </div>
 
                                 <div class="formGroup">
                                     <button type="button" class="btn btn-danger btn-block"
                                         (click)="ngAuthService.GoogleAuth()">
-                                        Log in with Google
+                                        Ingresar Google
                                     </button>
                                 </div>
 
-                                <div class="forgotPassword text-center mt-3">
+                                <div class="forgotPassword text-center mt-3 underHover" >
                                     <span routerLink="/forgot-password">¿Olvidó su contraseña?</span>
                                 </div>
                             </div>
 
-                            <div class="redirectToLogin text-center mb-1 mt-1">
+                            <div class="redirectToLogin text-center mb-1 mt-1 underHover" >
                                 <span>¿No está registrado?<span class="redirect" routerLink="/sign-up">
                                         Registrarse</span></span>
                             </div>
