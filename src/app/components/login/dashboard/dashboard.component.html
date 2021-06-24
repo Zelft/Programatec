@@ -21,7 +21,7 @@
                     <a class="btn btn-block btn-primary btnCustom bg-danger" (click)="ngAuthService.SignOut()">
                         Sign Out
                     </a>
-                    <button type="button" class="btn latestPosts border newExercise text-white addButton bg-primary">Añadir
+                    <button type="button" (click) = "navegarNuevoEjercicio()" class="btn latestPosts border newExercise text-white addButton bg-primary">Añadir
                         nuevo!</button>   
                 </div>
                 <div class="col-1">

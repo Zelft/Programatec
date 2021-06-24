@@ -86,4 +86,7 @@ export class DashboardComponent implements OnInit {
     ejercicio.data.likes += 1;
     this.db.updateEjercicio(ejercicio.id, ejercicio.data);
   }
+  navegarNuevoEjercicio(){
+    this.router.navigate(['/nuevoEjercicio'])
+  }
 }

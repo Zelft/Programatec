@@ -24,6 +24,9 @@ import { SignUpComponent } from './components/login/sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './components/login/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './components/login/verify-email/verify-email.component';
 import { NgAuthService } from "./services/auth/ng-auth.service";
+import { NuevoEjercicioComponent } from './components/nuevo-ejercicio/nuevo-ejercicio.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';  
+
 
 @NgModule({
   declarations: [
@@ -39,7 +42,8 @@ import { NgAuthService } from "./services/auth/ng-auth.service";
     SignInComponent,
     SignUpComponent,
     ForgotPasswordComponent,
-    VerifyEmailComponent
+    VerifyEmailComponent,
+    NuevoEjercicioComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +52,9 @@ import { NgAuthService } from "./services/auth/ng-auth.service";
     BrowserAnimationsModule,
     MatPaginatorModule,
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    FormsModule, 
+    ReactiveFormsModule
     ],
   providers: [DatePipe, NgAuthService],
   bootstrap: [AppComponent]

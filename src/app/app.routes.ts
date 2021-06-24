@@ -9,6 +9,7 @@ import { SignInComponent } from './components/login/sign-in/sign-in.component';
 import { SignUpComponent } from './components/login/sign-up/sign-up.component';
 import { VerifyEmailComponent } from './components/login/verify-email/verify-email.component';
 import { AuthGuard } from "./auth.guard";
+import { NuevoEjercicioComponent } from './components/nuevo-ejercicio/nuevo-ejercicio.component';
 
 
 
@@ -21,6 +22,7 @@ export const ROUTES: Routes = [
     { path: 'sign-in', component: SignInComponent },
     { path: 'sign-up', component: SignUpComponent },
     { path: 'dashboard', component: DashboardComponent },
+    { path: 'nuevoEjercicio', component: NuevoEjercicioComponent },
     { path: 'forgot-password', component: ForgotPasswordComponent },
     { path: 'email-verification', component: VerifyEmailComponent },
     { path: '**', pathMatch: 'full', redirectTo: 'home' },
