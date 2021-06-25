@@ -104,4 +104,8 @@ export class DashboardComponent implements OnInit {
     this.pageSlice = this.searchExercises.slice(0, 5);
     this.currentElementCounter = this.searchExercises.length;
   }
+
+  deleteExercise(ejercicio: string) {
+    console.log(ejercicio);
+  }
 }

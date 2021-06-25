@@ -27,7 +27,8 @@ import { NgAuthService } from "./services/auth/ng-auth.service";
 import { NuevoEjercicioComponent } from './components/nuevo-ejercicio/nuevo-ejercicio.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NivelesComponent } from './components/niveles/niveles.component';
-import { NivelComponent } from './components/nivel/nivel.component';  
+import { NivelComponent } from './components/nivel/nivel.component';
+
 
 
 @NgModule({
@@ -57,9 +58,9 @@ import { NivelComponent } from './components/nivel/nivel.component';
     MatPaginatorModule,
     AngularFireAuthModule,
     AngularFirestoreModule,
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule
-    ],
+  ],
   providers: [DatePipe, NgAuthService],
   bootstrap: [AppComponent]
 })
