@@ -1,7 +1,6 @@
 <div class="container fixed-content">
-    <h1 class="title-categories ml-3"> Categoría de {{section | lowercase}}</h1>
-
-    <div *ngFor="let ejercicio of ejercicios" class="card cardEjercicio justify-content-center">
+    <h1 class="title-categories ml-4"> Nivel {{nivelS | lowercase}} de dificiltad</h1>
+    <div *ngFor="let ejercicio of ejercicios" class="card cardEjercicio">
         <div class="card-body iconLogoExercise compound">
             <div class="row ml-0 mr-0 ">
                 <div class="col-2 iconExercise">

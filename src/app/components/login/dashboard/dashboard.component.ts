@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
   currentElementCounter: number;
 
 
-  constructor(public ngAuthService: NgAuthService, private db: FirestoreService,  private router: Router) { }
+  constructor(public ngAuthService: NgAuthService, private db: FirestoreService, private router: Router) { }
 
   ngOnInit(): void {
     this.db.getEjercicios().subscribe((dataEjercicios) => {
@@ -73,9 +73,9 @@ export class DashboardComponent implements OnInit {
     return image;
   }
 
-  getImageUserImage(name : any){
+  getImageUserImage(name: any) {
     console.log(name);
-    return 'assets/img/letters/png/'+name[0].toUpperCase()+ '.png';
+    return 'assets/img/letters/png/' + name[0].toUpperCase() + '.png';
   }
 
   verEjercicio(ejercicio: any) {
@@ -86,7 +86,14 @@ export class DashboardComponent implements OnInit {
     ejercicio.data.likes += 1;
     this.db.updateEjercicio(ejercicio.id, ejercicio.data);
   }
-  navegarNuevoEjercicio(){
+
+  navegarNuevoEjercicio() {
     this.router.navigate(['/nuevoEjercicio'])
+  }
+
+  buscar(termino: string) {
+    const result = this.ejercicios.filter(word => (word.data.call.includes(termino)) || (word.data.section.includes(termino)));
+    this.pageSlice = result.slice(0, 5);
+    this.currentElementCounter = result.length;
   }
 }

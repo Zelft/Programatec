@@ -25,7 +25,9 @@ import { ForgotPasswordComponent } from './components/login/forgot-password/forg
 import { VerifyEmailComponent } from './components/login/verify-email/verify-email.component';
 import { NgAuthService } from "./services/auth/ng-auth.service";
 import { NuevoEjercicioComponent } from './components/nuevo-ejercicio/nuevo-ejercicio.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';  
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NivelesComponent } from './components/niveles/niveles.component';
+import { NivelComponent } from './components/nivel/nivel.component';  
 
 
 @NgModule({
@@ -43,7 +45,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SignUpComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
-    NuevoEjercicioComponent
+    NuevoEjercicioComponent,
+    NivelesComponent,
+    NivelComponent
   ],
   imports: [
     BrowserModule,

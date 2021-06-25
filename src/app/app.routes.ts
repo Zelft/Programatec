@@ -10,12 +10,16 @@ import { SignUpComponent } from './components/login/sign-up/sign-up.component';
 import { VerifyEmailComponent } from './components/login/verify-email/verify-email.component';
 import { AuthGuard } from "./auth.guard";
 import { NuevoEjercicioComponent } from './components/nuevo-ejercicio/nuevo-ejercicio.component';
+import { NivelesComponent } from './components/niveles/niveles.component';
+import { NivelComponent } from './components/nivel/nivel.component';
 
 
 
 export const ROUTES: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'categorias', component: CategoriasComponent },
+    { path: 'niveles', component: NivelesComponent },
+    { path: 'nivel/:tipoNivel', component: NivelComponent },
     { path: 'ejercicio/:id', component: EjercicioComponent },
     { path: 'categoria/:tipoCategoria', component: CategoriaComponent },
     { path: '', pathMatch: 'full', redirectTo: 'home' },

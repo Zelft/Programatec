@@ -1,3 +1,12 @@
 .fixedContent{
-    margin-top: 15%;
+    margin-top: 8%;
+}
+
+.titles{
+    font-family: 'Gottam Rounded', sans-serif;
+    font-size: 20px;
+}
+
+.dropdown-color{
+    background-color: #0C2D48;
 }

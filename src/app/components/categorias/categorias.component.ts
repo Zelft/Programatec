@@ -9,7 +9,7 @@ import { FirestoreService } from 'src/app/services/firestore/firestore.service';
 })
 
 export class CategoriasComponent implements OnInit {
-  constructor(private router: ActivatedRoute, private db: FirestoreService, private router2: Router) { }
+  constructor(private db: FirestoreService, private router: Router) { }
   arboles: any[] = [];
   numericos: any[] = [];
   listas: any[] = [];
@@ -39,6 +39,6 @@ export class CategoriasComponent implements OnInit {
   };
 
   verEjerciciosCategoria(categoria: string) {
-    this.router2.navigate(['/categoria', categoria])
+    this.router.navigate(['/categoria', categoria])
   }
 }
