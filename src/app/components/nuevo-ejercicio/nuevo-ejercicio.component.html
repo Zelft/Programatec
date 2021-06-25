@@ -1,13 +1,11 @@
 <div class="container fixedContent">
 
-  <h1> Crear un nuevo ejercicio </h1>
+  <h1 class="title-new text-center"> Crear un nuevo ejercicio </h1>
 
   <form [formGroup]="exerciseForm" (ngSubmit)="onSubmit()">
-    <input type="text" id="name" name="name" placeholder="Nombre del ejericio" formControlName="name"
-      class="form-control">
+    <input type="text" id="name" name="name" placeholder="Nombre del ejercicio" formControlName="name"
+      class="form-control" required>
     <input type="text" id="call" name="call" placeholder="Llamada del ejercicio" formControlName="call"
-      class="form-control mt-2">
-    <input type="text" id="code" name="code" placeholder="Código del ejercicio" formControlName="code"
       class="form-control mt-2">
     <input type="date" id="created" name="created" placeholder="Fecha de creación" formControlName="created"
       class="form-control mt-2">
@@ -15,12 +13,11 @@
       class="form-control mt-2">
     <input type="text" id="details" name="details" placeholder="Detalles del ejercicio" formControlName="details"
       class="form-control mt-2">
+    <div class="row">
+      <h2 class="mt-3 titles-array">Ejemplos</h2>
+      <button type="button" (click)="addExample()" class="btn bg-success text-white button-add mt-3">Agregar</button>
+    </div>
     <table class="table table-bordered mt-2" formArrayName="examples">
-      <tr>
-        <th class="titles">Agregar ejemplos</th>
-        <th><button type="button" (click)="addExample()" class="btn bg-success text-white w-50">Agregar</button>
-        </th>
-      </tr>
       <tr *ngFor="let quantity of examples().controls; let i=index" [formGroupName]="i">
         <td>
           <input type="text" formControlName="call" placeholder="Llamada" class="form-control">
@@ -37,41 +34,69 @@
       </tr>
     </table>
     <div class="row">
-      <div class="col-2">
-        <div class="dropdown mb-3">
-          <button class="btn dropdown-color dropdown-toggle text-white" type="button" id="level" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Nivel de dificultad
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" value="1">Nivel 1</a>
-            <a class="dropdown-item" value="2">Nivel 2</a>
-            <a class="dropdown-item" value="3">Nivel 3</a>
-            <a class="dropdown-item" value="4">Nivel 4</a>
-            <a class="dropdown-item" value="5">Nivel 5</a>
-          </div>
-        </div>
+      <div class="col-3">
+        <select class="custom-select dropdown-color text-white" formControlName="level">
+          <option value="" disabled>Nivel de dificultad</option>
+          <option *ngFor="let level of levels" [ngValue]="level">{{level}}</option>
+        </select>
       </div>
-      <div class="col">
-        <div class="dropdown">
-          <button class="btn dropdown-color dropdown-toggle text-white" type="button" id="section"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Categoría del ejercicio
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" value="Listas, vectores y matrices">Listas, vectores y matrices</a>
-            <a class="dropdown-item" value="Condicionales">Condicionales</a>
-            <a class="dropdown-item" value="Algoritmos numéricos">Algoritmos numéricos</a>
-            <a class="dropdown-item" value="Árboles">Árboles</a>
-          </div>
-        </div>
+      <div class="col-3">
+        <select class="custom-select dropdown-color text-white" formControlName="section">
+          <option value="" disabled>Categoría del ejercicio</option>
+          <option *ngFor="let category of categories" [ngValue]="category">{{category}}</option>
+        </select>
       </div>
     </div>
+    <h2 class="mt-3">Solución del ejercicio</h2>
+    <input type="text" id="codeSolution" name="codeSolution" placeholder="Código de la solución"
+      formControlName="codeSolution" class="form-control mt-2" required>
+    <div class="row">
+      <h2 class="mt-3 titles">Entradas del ejercicio</h2>
+      <button type="button" (click)="addInput()" class="btn bg-success text-white button-add mt-3">Agregar</button>
+    </div>
+    <table class="table table-bordered mt-2" formArrayName="inputs">
+      <tr *ngFor="let quantity of inputs().controls; let i=index" [formGroupName]="i">
+        <td>
+          <input type="text" formControlName="name" placeholder="Nombre de la entrada" class="form-control">
+        </td>
+        <td>
+          <input type="text" formControlName="type" placeholder="Tipo de la entrada" class="form-control">
+        </td>
+        <td>
+          <button (click)="removeInput(i)" class="btn bg-danger text-white w-100">Eliminar</button>
+        </td>
+      </tr>
+    </table>
+    <div class="row">
+      <h2 class="mt-3 titles">Salidas del ejercicio</h2>
+      <button type="button" (click)="addOutput()" class="btn bg-success text-white button-add mt-3">Agregar</button>
+    </div>
+    <table class="table table-bordered mt-2" formArrayName="outputs">
+      <tr *ngFor="let quantity of outputs().controls; let i=index" [formGroupName]="i">
+        <td>
+          <input type="text" formControlName="name" placeholder="Nombre de la entrada" class="form-control">
+        </td>
+        <td>
+          <input type="text" formControlName="type" placeholder="Tipo de la entrada" class="form-control">
+        </td>
+        <td>
+          <button (click)="removeOutput(i)" class="btn bg-danger text-white w-100">Eliminar</button>
+        </td>
+      </tr>
+    </table>
+    <div style="text-align: center;">
+      <button type="submit" class="btn btn-success mt-3">Agregar
+        ejercicio</button>
+    </div>
 
-
-
-    <button type="submit" class="btn btn-success">Agregar ejercicio</button>
   </form>
   <br />
   {{this.exerciseForm.value | json}}
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
 </div>

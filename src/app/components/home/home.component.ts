@@ -110,7 +110,7 @@ export class HomeComponent implements OnInit {
     let busqueda = termino.toLocaleLowerCase();
 
     array.forEach(element => {
-      if (element.data.name.toLocaleLowerCase().includes(busqueda) || (element.data.section.toLocaleLowerCase().includes(busqueda))) {
+      if (element.data.name.toLocaleLowerCase().includes(busqueda) || (element.data.section.toLocaleLowerCase().includes(busqueda)) || (element.data.details.toLocaleLowerCase().includes(busqueda))) {
         this.searchExercises.push(element);
       }
     })

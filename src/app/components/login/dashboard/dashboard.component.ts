@@ -15,7 +15,7 @@ export class DashboardComponent implements OnInit {
   ejercicios: any[] = [];
   pageSlice: any[] = [];
   currentElementCounter: number;
-
+  searchExercises: any = [];
 
   constructor(public ngAuthService: NgAuthService, private db: FirestoreService, private router: Router) { }
 
@@ -92,8 +92,16 @@ export class DashboardComponent implements OnInit {
   }
 
   buscar(termino: string) {
-    const result = this.ejercicios.filter(word => (word.data.call.includes(termino)) || (word.data.section.includes(termino)));
-    this.pageSlice = result.slice(0, 5);
-    this.currentElementCounter = result.length;
+    this.searchExercises = [];
+    const array = this.ejercicios;
+    let busqueda = termino.toLocaleLowerCase();
+
+    array.forEach(element => {
+      if (element.data.name.toLocaleLowerCase().includes(busqueda) || (element.data.section.toLocaleLowerCase().includes(busqueda)) || (element.data.details.toLocaleLowerCase().includes(busqueda))) {
+        this.searchExercises.push(element);
+      }
+    })
+    this.pageSlice = this.searchExercises.slice(0, 5);
+    this.currentElementCounter = this.searchExercises.length;
   }
 }

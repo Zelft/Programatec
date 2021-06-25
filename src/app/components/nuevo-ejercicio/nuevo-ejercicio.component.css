@@ -4,9 +4,36 @@
 
 .titles{
     font-family: 'Gottam Rounded', sans-serif;
-    font-size: 20px;
+    font-size: 18px;
+    font-weight: 200;
+    width: 22%;
+}
+
+.title-new{
+    font-family: 'Gottam Rounded', sans-serif;
+    font-size: 30px;
+    font-weight: 200;
 }
 
 .dropdown-color{
-    background-color: #0C2D48;
+    background-color:#576f7c;
+}
+
+.button-add{
+    width: 15%;
+    height: 10%;
+}
+
+.button-outputs{
+    margin-left: 2.9%;
+    margin-right: 20%;
+    padding: auto;
+}
+
+.button-examples{
+    margin-left: 11.5%;
+}
+
+.titles-array{
+    width: 22%;
 }

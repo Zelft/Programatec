@@ -102,9 +102,9 @@
 }
 
 .latestPosts{
-    
     background: #576f7c;
 }
+
 .latestPostText{
     color: black;
     font-size: large;
@@ -134,6 +134,14 @@
 }
 
 .search-margins{
-    margin-left: 10%;
+    margin-left: 11%;
     margin-bottom: 3%;
+}
+
+.searchExercises{
+    width: 30%;
+}
+
+.search-icon{
+    width: 5%;
 }

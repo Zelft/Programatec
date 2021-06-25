@@ -11,21 +11,25 @@ export class NuevoEjercicioComponent {
 
   name = 'Angular';
   exerciseForm: FormGroup = null;
+  levels: any = ['Nivel 1', 'Nivel 2', 'Nivel 3', 'Nivel 4', 'Nivel 5'];
+  categories: any = ['Listas, vectores y matrices', 'Condicionales', ' Algoritmos numéricos', 'Árboles'];
 
   constructor(private fb: FormBuilder) {
+
     this.exerciseForm = this.fb.group({
       call: '',
-      code: '',
+      //hay que hacer un codigo incremental
       created: '',
       creator: '',
       details: '',
       examples: this.fb.array([]),
-      level: '',
+      level: [''],
       //likes va en 0
       name: '',
-      section: '',
-      solution: this.fb.array([]),
-      quantities: this.fb.array([]),
+      section: [''],
+      codeSolution: '',
+      inputs: this.fb.array([]),
+      outputs: this.fb.array([]),
     });
   }
 
@@ -66,28 +70,50 @@ export class NuevoEjercicioComponent {
     this.examples().removeAt(i);
   }
 
-  //Solution
-  solutions(): FormArray {
-    return this.exerciseForm.get("solutions") as FormArray
+  //inputs
+  inputs(): FormArray {
+    return this.exerciseForm.get("inputs") as FormArray
   }
 
-  newSolution(): FormGroup {
+  newInput(): FormGroup {
     return this.fb.group({
-      call: '',
-      comment: '',
-      result: '',
+      name: '',
+      type: '',
     })
   }
 
-  addSolution() {
-    this.solutions().push(this.newSolution());
+  addInput() {
+    this.inputs().push(this.newInput());
   }
-  removeSolution(i: number) {
-    this.solutions().removeAt(i);
+
+  removeInput(i: number) {
+    this.inputs().removeAt(i);
+  }
+
+  //outputs
+  outputs(): FormArray {
+    return this.exerciseForm.get("outputs") as FormArray
+  }
+
+  newOutput(): FormGroup {
+    return this.fb.group({
+      name: '',
+      type: '',
+    })
+  }
+
+  addOutput() {
+    this.outputs().push(this.newInput());
+  }
+
+  removeOutput(i: number) {
+    this.outputs().removeAt(i);
   }
 
   //Submit
   onSubmit() {
     console.log(this.exerciseForm.value);
+    //Obtener los valores por separado
+    console.log(this.exerciseForm.get('call').value);
   }
 }

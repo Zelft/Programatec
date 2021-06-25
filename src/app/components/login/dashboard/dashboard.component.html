@@ -24,15 +24,11 @@
     </div>
   </div>
   <div class="row search-margins">
-    <div class="input-group">
-      <div class="form-outline">
-        <input type="search" id="form1" #termino (keyup)="buscar(termino.value)" placeholder="Busca un ejercicio"
-          class="form-control searchExercises" />
-      </div>
-      <button type="button" class="btn latestPosts ">
-        <i class="fas fa-search text-white"></i>
-      </button>
-    </div>
+    <input type="search" id="form1" #termino (keyup)="buscar(termino.value)" placeholder="Buscar un ejercicio"
+      class="form-control searchExercises">
+    <button type="button" (click)="buscar(termino.value)" class="btn latestPosts search-icon ">
+      <i class="fas fa-search text-white "></i>
+    </button>
   </div>
   <div class="row  divEjercicios d-flex justify-content-center">
     <div *ngFor="let ejercicio of pageSlice" class="card cardEjercicio ">
