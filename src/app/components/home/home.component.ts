@@ -18,8 +18,9 @@ export class HomeComponent implements OnInit {
   latestPosts: string[] = [];
   topLiked: any[] = [];
   pageSlice: any[] = [];
-  sortedDates : any = [];
+  sortedDates: any = [];
   currentElementCounter: number;
+  searchExercises: any = [];
 
   constructor(private db: FirestoreService, private datePipe: DatePipe, private router: Router) {
 
@@ -104,22 +105,30 @@ export class HomeComponent implements OnInit {
   }
 
   buscar(termino: string) {
-    const result = this.ejercicios.filter(word => (word.data.call.includes(termino)) || (word.data.section.includes(termino)));
-    this.pageSlice = result.slice(0, 5);
-    this.currentElementCounter = result.length;
+    this.searchExercises = [];
+    const array = this.ejercicios;
+    let busqueda = termino.toLocaleLowerCase();
+
+    array.forEach(element => {
+      if (element.data.name.toLocaleLowerCase().includes(busqueda) || (element.data.section.toLocaleLowerCase().includes(busqueda))) {
+        this.searchExercises.push(element);
+      }
+    })
+    this.pageSlice = this.searchExercises.slice(0, 5);
+    this.currentElementCounter = this.searchExercises.length;
   }
 
   verEjercicio(ejercicio: any) {
     this.router.navigate(['/ejercicio', ejercicio.id])
   }
 
-  orderDates (){
+  orderDates() {
     let modifiedDates = [...this.ejercicios];
-    for (let index = 0; index < this.ejercicios.length; index++){ 
-      modifiedDates[index].data.created = new Date(modifiedDates[index].data.created); 
+    for (let index = 0; index < this.ejercicios.length; index++) {
+      modifiedDates[index].data.created = new Date(modifiedDates[index].data.created);
     }
 
-    this.sortedDates = modifiedDates.slice().sort((a, b) => b.data.created - a.data.created).slice(0,10);
+    this.sortedDates = modifiedDates.slice().sort((a, b) => b.data.created - a.data.created).slice(0, 10);
   }
 
 
