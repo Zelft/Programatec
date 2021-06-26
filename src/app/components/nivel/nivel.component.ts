@@ -21,8 +21,11 @@ export class NivelComponent implements OnInit {
         this.db.getEjercicios().subscribe((dataEjercicios) => {
           dataEjercicios.forEach((ejercicio: any) => {
             if (ejercicio.payload.doc.data().level == "1") {
-              this.ejercicios.push(ejercicio);
-              this.nivelS = this.ejercicios[0].payload.doc.data().level;
+              this.ejercicios.push({
+                id: ejercicio.payload.doc.id,
+                data: ejercicio.payload.doc.data()
+              });
+              this.nivelS = this.ejercicios[0].data.level;
             }
           });
         })
@@ -31,8 +34,11 @@ export class NivelComponent implements OnInit {
         this.db.getEjercicios().subscribe((dataEjercicios) => {
           dataEjercicios.forEach((ejercicio: any) => {
             if (ejercicio.payload.doc.data().level == "2") {
-              this.ejercicios.push(ejercicio);
-              this.nivelS = this.ejercicios[0].payload.doc.data().level;
+              this.ejercicios.push({
+                id: ejercicio.payload.doc.id,
+                data: ejercicio.payload.doc.data()
+              });
+              this.nivelS = this.ejercicios[0].data.level;
             }
           });
         })
@@ -41,8 +47,11 @@ export class NivelComponent implements OnInit {
         this.db.getEjercicios().subscribe((dataEjercicios) => {
           dataEjercicios.forEach((ejercicio: any) => {
             if (ejercicio.payload.doc.data().level == "3") {
-              this.ejercicios.push(ejercicio);
-              this.nivelS = this.ejercicios[0].payload.doc.data().level;
+              this.ejercicios.push({
+                id: ejercicio.payload.doc.id,
+                data: ejercicio.payload.doc.data()
+              });
+              this.nivelS = this.ejercicios[0].data.level;
             }
           });
         })
@@ -51,8 +60,11 @@ export class NivelComponent implements OnInit {
         this.db.getEjercicios().subscribe((dataEjercicios) => {
           dataEjercicios.forEach((ejercicio: any) => {
             if (ejercicio.payload.doc.data().level == "4") {
-              this.ejercicios.push(ejercicio);
-              this.nivelS = this.ejercicios[0].payload.doc.data().level;
+              this.ejercicios.push({
+                id: ejercicio.payload.doc.id,
+                data: ejercicio.payload.doc.data()
+              });
+              this.nivelS = this.ejercicios[0].data.level;
             }
           });
         })
@@ -60,8 +72,11 @@ export class NivelComponent implements OnInit {
         this.db.getEjercicios().subscribe((dataEjercicios) => {
           dataEjercicios.forEach((ejercicio: any) => {
             if (ejercicio.payload.doc.data().level == "5") {
-              this.ejercicios.push(ejercicio);
-              this.nivelS = this.ejercicios[0].payload.doc.data().level;
+              this.ejercicios.push({
+                id: ejercicio.payload.doc.id,
+                data: ejercicio.payload.doc.data()
+              });
+              this.nivelS = this.ejercicios[0].data.level;
             }
           });
         })
@@ -71,7 +86,7 @@ export class NivelComponent implements OnInit {
   }
 
   getIcon(ejercicio: any) {
-    let value = ejercicio.payload.doc.data().section;
+    let value = ejercicio.data.section;
     let imgPath: string;
     switch (value) {
       case "Algoritmos numéricos":
@@ -93,12 +108,12 @@ export class NivelComponent implements OnInit {
   }
 
   getImage(ejercicio: any): string {
-    let image = "assets/img/letters/png/" + ejercicio.payload.doc.data().creator[0].toUpperCase() + ".png";
+    let image = "assets/img/letters/png/" + ejercicio.data.creator[0].toUpperCase() + ".png";
     return image;
   }
 
   verEjercicio(ejercicio: any) {
-    this.router.navigate(['/ejercicio', ejercicio.payload.doc.id])
+    this.router.navigate(['/ejercicio', ejercicio.id])
   }
 
   likeExercise(ejercicio: any) {

@@ -20,17 +20,19 @@ export class CategoriaComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
-      console.log(params);
       if (params.tipoCategoria == "listas") {
         this.db.getEjercicios().subscribe((dataEjercicios) => {
           dataEjercicios.forEach((ejercicio: any) => {
+            console.log(ejercicio.payload.doc.data());
             if (ejercicio.payload.doc.data().section == "Listas, vectores y matrices") {
-              this.exercises.push(ejercicio);
-              this.section = this.exercises[0].payload.doc.data().section;
-
+              this.exercises.push({
+                id: ejercicio.payload.doc.id,
+                data: ejercicio.payload.doc.data()
+              });
+              this.section = this.exercises[0].data.section;
             }
           });
-          
+
         })
       }
       else if (params.tipoCategoria == "condicionales") {
@@ -38,8 +40,11 @@ export class CategoriaComponent implements OnInit {
           this.exercises = [];
           dataEjercicios.forEach((ejercicio: any) => {
             if (ejercicio.payload.doc.data().section == "Condicionales") {
-              this.exercises.push(ejercicio);
-              this.section = this.exercises[0].payload.doc.data().section;
+              this.exercises.push({
+                id: ejercicio.payload.doc.id,
+                data: ejercicio.payload.doc.data()
+              });
+              this.section = this.exercises[0].data.section;
             }
           });
         })
@@ -49,12 +54,14 @@ export class CategoriaComponent implements OnInit {
           this.exercises = [];
           dataEjercicios.forEach((ejercicio: any) => {
             if (ejercicio.payload.doc.data().section == "Algoritmos numéricos") {
-              if(ejercicio.payload.doc.data().created != null){
-                console.log(ejercicio.payload.doc.id);
-                this.exercises.push(ejercicio);
-                this.section = this.exercises[0].payload.doc.data().section;
+              if (ejercicio.payload.doc.data().created != null) {
+                this.exercises.push({
+                  id: ejercicio.payload.doc.id,
+                  data: ejercicio.payload.doc.data()
+                });
+                this.section = this.exercises[0].data.section;
               }
-              
+
             }
           });
         })
@@ -63,8 +70,11 @@ export class CategoriaComponent implements OnInit {
           this.exercises = [];
           dataEjercicios.forEach((ejercicio: any) => {
             if (ejercicio.payload.doc.data().section == "Árboles") {
-              this.exercises.push(ejercicio);
-              this.section = this.exercises[0].payload.doc.data().section;
+              this.exercises.push({
+                id: ejercicio.payload.doc.id,
+                data: ejercicio.payload.doc.data()
+              });
+              this.section = this.exercises[0].data.section;
             }
           });
         })
@@ -72,11 +82,10 @@ export class CategoriaComponent implements OnInit {
     });
     console.log(this.exercises);
 
-
   }
 
   getIcon(ejercicio: any) {
-    let value = ejercicio.payload.doc.data().section;
+    let value = ejercicio.data.section;
     let imgPath: string;
     switch (value) {
       case "Algoritmos numéricos":
@@ -98,21 +107,17 @@ export class CategoriaComponent implements OnInit {
   }
 
   getImage(ejercicio: any): string {
-    let image = "assets/img/letters/png/" + ejercicio.payload.doc.data().creator[0].toUpperCase() + ".png";
+    let image = "assets/img/letters/png/" + ejercicio.data.creator[0].toUpperCase() + ".png";
     return image;
   }
 
   verEjercicio(ejercicio: any) {
-    this.router.navigate(['/ejercicio', ejercicio.payload.doc.id])
+    this.router.navigate(['/ejercicio', ejercicio.id])
   }
 
   likeExercise(ejercicio: any) {
-    
-    ejercicio.payload.doc.data()['likes'] +=1;
-    //ejercicio.data.likes += 1;
-    console.log(this.exercises[0].payload.doc.data());
-    console.log(ejercicio.payload.doc.data());
-    //this.db.updateEjercicio(ejercicio.id, ejercicio.data);
+    ejercicio.data.likes += 1;
+    this.db.updateEjercicio(ejercicio.id, ejercicio.data);
   }
 
 }
