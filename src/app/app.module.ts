@@ -48,7 +48,7 @@ import { NivelComponent } from './components/nivel/nivel.component';
     VerifyEmailComponent,
     NuevoEjercicioComponent,
     NivelesComponent,
-    NivelComponent
+    NivelComponent,
   ],
   imports: [
     BrowserModule,

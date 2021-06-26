@@ -22,10 +22,14 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.db.getEjercicios().subscribe((dataEjercicios) => {
       dataEjercicios.forEach((ejercicio: any) => {
+        if(ejercicio.payload.doc.data().created != null){
+        
+        
         this.ejercicios.push({
           id: ejercicio.payload.doc.id,
           data: ejercicio.payload.doc.data()
         });
+      };
       })
       this.pageSlice = this.ejercicios.slice(0, 5);
       this.currentElementCounter = dataEjercicios.length;

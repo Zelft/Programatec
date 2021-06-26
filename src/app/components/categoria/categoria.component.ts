@@ -9,7 +9,7 @@ import { PageEvent } from '@angular/material/paginator';
   styleUrls: ['./categoria.component.css']
 })
 export class CategoriaComponent implements OnInit {
-  ejercicios: any[] = [];
+  exercises: any[] = [];
   pageSlice: any[] = [];
   currentElementCounter: number;
   section: string = "";
@@ -20,48 +20,57 @@ export class CategoriaComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
+      console.log(params);
       if (params.tipoCategoria == "listas") {
         this.db.getEjercicios().subscribe((dataEjercicios) => {
           dataEjercicios.forEach((ejercicio: any) => {
             if (ejercicio.payload.doc.data().section == "Listas, vectores y matrices") {
-              this.ejercicios.push(ejercicio);
-              this.section = this.ejercicios[0].payload.doc.data().section;
+              this.exercises.push(ejercicio);
+              this.section = this.exercises[0].payload.doc.data().section;
 
             }
           });
+          
         })
       }
       else if (params.tipoCategoria == "condicionales") {
         this.db.getEjercicios().subscribe((dataEjercicios) => {
+          this.exercises = [];
           dataEjercicios.forEach((ejercicio: any) => {
             if (ejercicio.payload.doc.data().section == "Condicionales") {
-              this.ejercicios.push(ejercicio);
-              this.section = this.ejercicios[0].payload.doc.data().section;
+              this.exercises.push(ejercicio);
+              this.section = this.exercises[0].payload.doc.data().section;
             }
           });
         })
       }
       else if (params.tipoCategoria == "numericos") {
         this.db.getEjercicios().subscribe((dataEjercicios) => {
+          this.exercises = [];
           dataEjercicios.forEach((ejercicio: any) => {
             if (ejercicio.payload.doc.data().section == "Algoritmos numéricos") {
-              this.ejercicios.push(ejercicio);
-              this.section = this.ejercicios[0].payload.doc.data().section;
+              if(ejercicio.payload.doc.data().created != null){
+                console.log(ejercicio.payload.doc.id);
+                this.exercises.push(ejercicio);
+                this.section = this.exercises[0].payload.doc.data().section;
+              }
+              
             }
           });
         })
       } else {
         this.db.getEjercicios().subscribe((dataEjercicios) => {
+          this.exercises = [];
           dataEjercicios.forEach((ejercicio: any) => {
             if (ejercicio.payload.doc.data().section == "Árboles") {
-              this.ejercicios.push(ejercicio);
-              this.section = this.ejercicios[0].payload.doc.data().section;
+              this.exercises.push(ejercicio);
+              this.section = this.exercises[0].payload.doc.data().section;
             }
           });
         })
       }
     });
-    console.log(this.ejercicios);
+    console.log(this.exercises);
 
 
   }
@@ -98,8 +107,12 @@ export class CategoriaComponent implements OnInit {
   }
 
   likeExercise(ejercicio: any) {
-    ejercicio.data.likes += 1;
-    this.db.updateEjercicio(ejercicio.id, ejercicio.data);
+    
+    ejercicio.payload.doc.data()['likes'] +=1;
+    //ejercicio.data.likes += 1;
+    console.log(this.exercises[0].payload.doc.data());
+    console.log(ejercicio.payload.doc.data());
+    //this.db.updateEjercicio(ejercicio.id, ejercicio.data);
   }
 
 }

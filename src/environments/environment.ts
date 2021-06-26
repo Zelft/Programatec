@@ -5,13 +5,12 @@
 export const environment = {
   production: false,
   firebase : {
-    apiKey: "AIzaSyD1PKYgiEriRlHqBYqCSh2cB3N23HWg1lI",
-    authDomain: "programatec-115c9.firebaseapp.com",
-    databaseURL: "https://programatec-115c9-default-rtdb.firebaseio.com",
-    projectId: "programatec-115c9",
-    storageBucket: "programatec-115c9.appspot.com",
-    messagingSenderId: "1010939995216",
-    appId: "1:1010939995216:web:0ce9146d42bb2a83ff5d55"
+    apiKey: "AIzaSyBECdY7Vg7xoip0KekQLB-ZL-a43ggJt9U",
+    authDomain: "programatec-35a31.firebaseapp.com",
+    projectId: "programatec-35a31",
+    storageBucket: "programatec-35a31.appspot.com",
+    messagingSenderId: "760317274139",
+    appId: "1:760317274139:web:8112e54fb015b717a970be"
   }
 };
 

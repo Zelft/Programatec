@@ -7,8 +7,6 @@
       class="form-control" required>
     <input type="text" id="call" name="call" placeholder="Llamada del ejercicio" formControlName="call"
       class="form-control mt-2">
-    <input type="date" id="created" name="created" placeholder="Fecha de creación" formControlName="created"
-      class="form-control mt-2">
     <input type="text" id="creator" name="creator" placeholder="Creador" formControlName="creator"
       class="form-control mt-2">
     <input type="text" id="details" name="details" placeholder="Detalles del ejercicio" formControlName="details"
@@ -37,7 +35,7 @@
       <div class="col-3">
         <select class="custom-select dropdown-color text-white" formControlName="level">
           <option value="" disabled>Nivel de dificultad</option>
-          <option *ngFor="let level of levels" [ngValue]="level">{{level}}</option>
+          <option *ngFor="let level of levels" [ngValue]="level">Nivel: {{level}}</option>
         </select>
       </div>
       <div class="col-3">

@@ -10,8 +10,8 @@ export class FirestoreService {
   ) { }
 
   //Crea un nuevo ejercicio
-  public createEjercicio(data: { call: string, creator: string, code: string, examples: any, solution: any, level: string, created: string, name: string, section: string, details: string }) {
-    return this.firestore.collection('ejercicios').add(data);
+  public createEjercicio(ejercicio : any) {
+    return this.firestore.collection('ejercicios').add(ejercicio);
   }
 
   //Obtiene un ejercicio
