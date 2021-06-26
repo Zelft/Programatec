@@ -1,6 +1,6 @@
 <div class="fixedContent">
     <div class="container">
-        <h2 class="title-exercise">{{ejercicio.payload.data()['name']}}</h2>
+        <h2 class="title-exercise">{{ejercicio.data.name}}</h2>
         <div class="row">
             <div class="col-6">
                 <div class="card">
@@ -8,10 +8,13 @@
                         Definición
                     </div>
                     <div class="card-body">
+                        <h2 class="card-title">Dificultad <app-rating [ejercicioInfo]="ejercicio">
+                            </app-rating>
+                        </h2>
                         <h2 class="card-title">Descripción</h2>
-                        <p class="card-text exercise-details">{{ejercicio.payload.data().details}}</p>
+                        <p class="card-text exercise-details">{{ejercicio.data.details}}</p>
                         <h2 class="card-title">Ejemplos</h2>
-                        <div *ngFor="let ejemplo of ejercicio.payload.data().examples ; let i=index">
+                        <div *ngFor="let ejemplo of ejercicio.data.examples ; let i=index">
                             <div class="card  card-details">
                                 <div class="card-body">
                                     <h3 class="card-header examples-title examples-header-color text-white">Ejemplo
@@ -31,19 +34,19 @@
                         Solución
                     </div>
                     <div class="card-body">
-                        <h2 class="card-title">Llamada: <span>{{ejercicio.payload.data().call}} </span></h2>
+                        <h2 class="card-title">Llamada: <span>{{ejercicio.data.call}} </span></h2>
                         <h2 class="card-title">Entradas</h2>
-                        <div *ngFor="let entrada of ejercicio.payload.data().solution.inputs">
+                        <div *ngFor="let entrada of ejercicio.data.solution.inputs">
                             <p class="card-text exercise-details mt-2"><b>{{entrada.name}}:</b> {{entrada.type}}</p>
                         </div>
                         <h2 class="card-title mt-3">Salidas</h2>
-                        <div *ngFor="let salida of ejercicio.payload.data().solution.outputs">
+                        <div *ngFor="let salida of ejercicio.data.solution.outputs">
                             <p class="card-text exercise-details mt-2"><b>{{salida.name}}:</b> {{salida.type}}</p>
                         </div>
                         <h2 class="card-title mt-3">Código</h2>
                         <div class="card card-details">
                             <div class="card-body">
-                                <pre><code class="python">{{ejercicio.payload.data().solution.code}}</code></pre>
+                                <pre><code class="python">{{ejercicio.data.solution.code}}</code></pre>
                             </div>
                         </div>
                         <button class="btn btn-success mt-3" (click)="downloadCode(ejercicio)">Descargar código</button>

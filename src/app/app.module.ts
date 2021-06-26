@@ -28,6 +28,8 @@ import { NuevoEjercicioComponent } from './components/nuevo-ejercicio/nuevo-ejer
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NivelesComponent } from './components/niveles/niveles.component';
 import { NivelComponent } from './components/nivel/nivel.component';
+import { RatingModule } from 'ngx-bootstrap/rating';
+import { RatingComponent } from './components/rating/rating.component';
 
 
 
@@ -49,6 +51,7 @@ import { NivelComponent } from './components/nivel/nivel.component';
     NuevoEjercicioComponent,
     NivelesComponent,
     NivelComponent,
+    RatingComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,7 +62,8 @@ import { NivelComponent } from './components/nivel/nivel.component';
     AngularFireAuthModule,
     AngularFirestoreModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RatingModule.forRoot()
   ],
   providers: [DatePipe, NgAuthService],
   bootstrap: [AppComponent]

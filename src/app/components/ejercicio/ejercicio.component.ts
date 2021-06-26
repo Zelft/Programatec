@@ -21,7 +21,10 @@ export class EjercicioComponent implements OnInit {
 
     this.activatedRoute.params.subscribe(params => {
       this.db.getEjercicio(params.id).subscribe((dataEjercicio) => {
-        this.ejercicio = dataEjercicio;
+        this.ejercicio = {
+          id: params.id,
+          data: dataEjercicio.payload.data()
+        };
       });
     })
 

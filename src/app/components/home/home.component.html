@@ -1,5 +1,5 @@
 <div class="container">
-  
+
   <div class="row fixedContent">
     <div class="col-7 ">
       <div class="card border pb-3">
@@ -15,7 +15,7 @@
                 <input type="search" id="form1" #termino (keyup)="buscar(termino.value)"
                   placeholder="Busca un ejercicio" class="form-control searchExercises" />
               </div>
-              <button type="button"  class="btn latestPosts ml-4">
+              <button type="button" class="btn latestPosts ml-4">
                 <i class="fas fa-search text-white"></i>
               </button>
             </div>
@@ -62,7 +62,7 @@
     <div class="col-5 ">
       <div class="card latestPosts">
         <div class="card-header latestPostText text-white">
-          Últimos Ejercicios 
+          Últimos Ejercicios
         </div>
         <ul class="list-group list-group-flush ">
           <li class="list-group-item compound topLiked" *ngFor="let sortedDate of sortedDates">
@@ -70,14 +70,14 @@
               <i class="fab fa-codepen mr-2 pt-1 "> </i>
               {{ sortedDate.data.name }} |
               {{sortedDate.data.created | date: 'yyyy-MM-dd'}}
-              
-     
+
+
             </div>
           </li>
         </ul>
       </div>
 
     </div>
-    
+
   </div>
 </div>
