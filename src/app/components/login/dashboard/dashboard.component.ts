@@ -3,6 +3,8 @@ import { NgAuthService } from 'src/app/services/auth/ng-auth.service';
 import { FirestoreService } from 'src/app/services/firestore/firestore.service';
 import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -109,7 +111,18 @@ export class DashboardComponent implements OnInit {
     this.currentElementCounter = this.searchExercises.length;
   }
 
-  deleteExercise(ejercicio: string) {
-    console.log(ejercicio);
+  deleteExercise(ejercicio: any) {
+    if(ejercicio != null){
+      this.db.deleteEjercicio(ejercicio.id);
+      console.log("Ejercicio eliminado!");
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Ejercicio eliminado exitosamente!',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    }
+    
   }
 }
