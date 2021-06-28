@@ -37,3 +37,43 @@
 .titles-array{
     width: 22%;
 }
+
+/**/
+
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+    .contenedor-formulario {
+      width: 400px;
+    }
+  
+    .download {
+      background: #1081ff;
+      color: #FFFFFF;
+      padding: 10px 20px;
+      margin-bottom: 20px;
+    }
+     .download a {
+        text-decoration: underline;
+        color: #FFFFFF;
+      }
+    
+  
+
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    background : blue;
+}
+
+    
+  

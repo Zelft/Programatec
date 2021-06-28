@@ -19,7 +19,7 @@
 }
 
 .searchExercises{
-    width: 125%;
+    width: 250%;
 }
 
 .divEjercicios{
@@ -82,9 +82,9 @@
     font-size: 90%;
 }
 
-.latestPosts{
-    
+.latestPosts{    
     background: #576f7c;
+    margin-left: 10%;
 }
 .latestPostText{
     color: black;

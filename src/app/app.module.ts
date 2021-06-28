@@ -31,6 +31,10 @@ import { NivelComponent } from './components/nivel/nivel.component';
 import { RatingModule } from 'ngx-bootstrap/rating';
 import { RatingComponent } from './components/rating/rating.component';
 
+//Agrega estos módulos
+import { AngularFireStorageModule } from '@angular/fire/storage';
+
+//Formularios
 
 
 @NgModule({
@@ -52,6 +56,7 @@ import { RatingComponent } from './components/rating/rating.component';
     NivelesComponent,
     NivelComponent,
     RatingComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -63,7 +68,8 @@ import { RatingComponent } from './components/rating/rating.component';
     AngularFirestoreModule,
     FormsModule,
     ReactiveFormsModule,
-    RatingModule.forRoot()
+    RatingModule.forRoot(),
+    AngularFireStorageModule
   ],
   providers: [DatePipe, NgAuthService],
   bootstrap: [AppComponent]

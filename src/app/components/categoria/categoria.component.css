@@ -1,5 +1,6 @@
 .fixed-content{
     margin-top: 8%;
+    margin-left: 10%;
 }
 
 .title-categories{
@@ -74,4 +75,9 @@
 
 .text-admin{
     font-size: 90%;
+}
+.searchBar{
+    margin-bottom: 1%;
+    align-self: center;
+    margin-left: 13%;
 }

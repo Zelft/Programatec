@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FirestoreService } from 'src/app/services/firestore/firestore.service';
+import { PageEvent } from '@angular/material/paginator';
+
 
 @Component({
   selector: 'app-nivel',
@@ -11,6 +13,8 @@ export class NivelComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute, private db: FirestoreService, private router: Router) { }
   ejercicios: any[] = [];
+  pageSlice: any[] = [];
+  currentElementCounter: number;
   nivelS: string = "";
 
 
@@ -28,6 +32,8 @@ export class NivelComponent implements OnInit {
               this.nivelS = this.ejercicios[0].data.level;
             }
           });
+          this.pageSlice = this.ejercicios.slice(0, 5);
+          this.currentElementCounter = this.ejercicios.length;
         })
       }
       else if (params.tipoNivel == "2") {
@@ -41,6 +47,8 @@ export class NivelComponent implements OnInit {
               this.nivelS = this.ejercicios[0].data.level;
             }
           });
+          this.pageSlice = this.ejercicios.slice(0, 5);
+          this.currentElementCounter = this.ejercicios.length;
         })
       }
       else if (params.tipoNivel == "3") {
@@ -54,6 +62,8 @@ export class NivelComponent implements OnInit {
               this.nivelS = this.ejercicios[0].data.level;
             }
           });
+          this.pageSlice = this.ejercicios.slice(0, 5);
+          this.currentElementCounter = this.ejercicios.length;
         })
       }
       else if (params.tipoNivel == "4") {
@@ -67,6 +77,8 @@ export class NivelComponent implements OnInit {
               this.nivelS = this.ejercicios[0].data.level;
             }
           });
+          this.pageSlice = this.ejercicios.slice(0, 5);
+          this.currentElementCounter = this.ejercicios.length;
         })
       } else {
         this.db.getEjercicios().subscribe((dataEjercicios) => {
@@ -79,6 +91,8 @@ export class NivelComponent implements OnInit {
               this.nivelS = this.ejercicios[0].data.level;
             }
           });
+          this.pageSlice = this.ejercicios.slice(0, 5);
+          this.currentElementCounter = this.ejercicios.length;
         })
       }
     });
@@ -120,5 +134,15 @@ export class NivelComponent implements OnInit {
     ejercicio.data.likes += 1;
     this.db.updateEjercicio(ejercicio.id, ejercicio.data);
   }
+
+    
+  onPageChange(event: PageEvent) {
+    const startIndex = event.pageIndex * event.pageSize;
+    let endIndex = startIndex + event.pageSize;
+    if (endIndex > this.ejercicios.length) {
+       endIndex = this.ejercicios.length
+    }
+    this.pageSlice = this.ejercicios.slice(startIndex, endIndex);
+ }
 
 }
