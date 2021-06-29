@@ -19,6 +19,7 @@ export class NuevoEjercicioComponent implements OnInit{
   levels: any = ['1', '2', '3', '4', '5'];
   categories: any = ['Listas, vectores y matrices', 'Condicionales', ' Algoritmos numéricos', 'Árboles'];
   currentCode : any = 0;
+  sent : boolean = false;
   //ejercicios : any[] = [];
 
   //Informacion de Archivo de Subida
@@ -117,7 +118,7 @@ export class NuevoEjercicioComponent implements OnInit{
 
   //Submit
   onSubmit() {
-   if(this.nombreArchivo == ""){
+   if(this.nombreArchivo == "" || !this.sent){
       Swal.fire({
       icon: 'error',
       title: 'Oops...',
@@ -191,6 +192,7 @@ export class NuevoEjercicioComponent implements OnInit{
          referencia.getDownloadURL().subscribe((URL) => {
             this.URLPublica = URL;
             console.log(this.URLPublica);
+            this.sent = true;
           });
        }, 2000 );
   

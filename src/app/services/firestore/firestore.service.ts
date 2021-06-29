@@ -25,7 +25,7 @@ export class FirestoreService {
   }
 
   //Actualiza un ejercicio
-  public updateEjercicio(documentId: string, data: { call: string, creator: string, code: string, examples: any, solution: any, level: string, created: Date, name: string, section: string, details: string }) {
+  public updateEjercicio(documentId: string, data: any) {
     return this.firestore.collection('ejercicios').doc(documentId).set(data);
   }
 

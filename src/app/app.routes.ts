@@ -12,6 +12,7 @@ import { AuthGuard } from "./auth.guard";
 import { NuevoEjercicioComponent } from './components/nuevo-ejercicio/nuevo-ejercicio.component';
 import { NivelesComponent } from './components/niveles/niveles.component';
 import { NivelComponent } from './components/nivel/nivel.component';
+import { EditarEjercicioComponent } from './components/editar-ejercicio/editar-ejercicio.component';
 
 
 
@@ -27,6 +28,7 @@ export const ROUTES: Routes = [
     { path: 'sign-up', component: SignUpComponent },
     { path: 'dashboard', component: DashboardComponent },
     { path: 'nuevoEjercicio', component: NuevoEjercicioComponent },
+    { path: 'editarEjercicio/:id', component: EditarEjercicioComponent },
     { path: 'forgot-password', component: ForgotPasswordComponent },
     { path: 'email-verification', component: VerifyEmailComponent },
     { path: '**', pathMatch: 'full', redirectTo: 'home' },

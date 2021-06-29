@@ -96,6 +96,11 @@ export class DashboardComponent implements OnInit {
   navegarNuevoEjercicio() {
     this.router.navigate(['/nuevoEjercicio'])
   }
+  navegarEditarEjercicio(ejercicio : any) {
+    this.router.navigate(['/editarEjercicio', ejercicio.id])
+    
+  }
+
 
   buscar(termino: string) {
     this.searchExercises = [];

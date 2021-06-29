@@ -35,10 +35,11 @@
                     <button class="likeButton" (click)="likeExercise(ejercicio)">
                       <img src="assets\img\like.png" class="like" alt="">
                     </button>
-
                     {{ejercicio.data.level}}
-                    <img src="assets\img\level.png" class="level" alt="">
-
+                    <img src="assets\img\level.png" class="level pr-1" alt="">
+                    
+                    Dificultad:<app-rating class="mt-2 p-0" [ejercicioInfo]="ejercicio"> </app-rating>
+                  
                   </div>
                 </div>
                 <div class="col-2 adminInfo ml-0">

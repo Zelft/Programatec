@@ -33,6 +33,7 @@ import { RatingComponent } from './components/rating/rating.component';
 
 //Agrega estos módulos
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { EditarEjercicioComponent } from './components/editar-ejercicio/editar-ejercicio.component';
 
 //Formularios
 
@@ -56,6 +57,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
     NivelesComponent,
     NivelComponent,
     RatingComponent,
+    EditarEjercicioComponent,
 
   ],
   imports: [

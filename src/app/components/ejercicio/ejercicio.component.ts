@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FirestoreService } from 'src/app/services/firestore/firestore.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-ejercicio',
@@ -14,7 +15,17 @@ export class EjercicioComponent implements OnInit {
   }
 
   downloadCode(ejercicio: any) {
-
+    if(ejercicio.data.archivosSubidos != null){
+      window.open(ejercicio.data.archivosSubidos);
+    }
+    else{
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Este ejercicio no tiene ningún archivo adjunto!'
+        })
+    }
+    
   }
 
   ngOnInit(): void {

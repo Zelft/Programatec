@@ -50,7 +50,7 @@
               {{ejercicio.data.level}}
               <img src="assets\img\level.png" class="level" alt="">
 
-              <button class="likeButton">
+              <button (click)="navegarEditarEjercicio(ejercicio)" class="likeButton">
                 <img src="assets\img\pen.png" class="like" alt="erase">
               </button>
               <button class="likeButton" (click)="deleteExercise(ejercicio)">
