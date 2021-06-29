@@ -15,7 +15,6 @@ export class RatingComponent implements OnInit {
 
   constructor(private db: FirestoreService) { }
   ngOnInit(): void {
-    console.log(this.ejercicioInfo.data['rating']);
     this.displayRating();
   }
 
@@ -24,7 +23,6 @@ export class RatingComponent implements OnInit {
       this.isReadonly = false;
       this.ejercicioInfo.data['rating'].push(this.rate);
       this.db.updateEjercicio(this.ejercicioInfo.id, this.ejercicioInfo.data);
-      console.log(this.ejercicioInfo.data);
     }
   }
 
@@ -34,7 +32,6 @@ export class RatingComponent implements OnInit {
       promedio += element;
     });
     this.rate = Math.ceil(promedio / (this.ejercicioInfo.data['rating'].length));
-    console.log(this.rate);
   }
 
 }

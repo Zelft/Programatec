@@ -24,14 +24,14 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.db.getEjercicios().subscribe((dataEjercicios) => {
       dataEjercicios.forEach((ejercicio: any) => {
-        if(ejercicio.payload.doc.data().created != null){
-        
-        
-        this.ejercicios.push({
-          id: ejercicio.payload.doc.id,
-          data: ejercicio.payload.doc.data()
-        });
-      };
+        if (ejercicio.payload.doc.data().created != null) {
+
+
+          this.ejercicios.push({
+            id: ejercicio.payload.doc.id,
+            data: ejercicio.payload.doc.data()
+          });
+        };
       })
       this.pageSlice = this.ejercicios.slice(0, 5);
       this.currentElementCounter = dataEjercicios.length;
@@ -80,7 +80,6 @@ export class DashboardComponent implements OnInit {
   }
 
   getImageUserImage(name: any) {
-    console.log(name);
     return 'assets/img/letters/png/' + name[0].toUpperCase() + '.png';
   }
 
@@ -96,9 +95,9 @@ export class DashboardComponent implements OnInit {
   navegarNuevoEjercicio() {
     this.router.navigate(['/nuevoEjercicio'])
   }
-  navegarEditarEjercicio(ejercicio : any) {
+  navegarEditarEjercicio(ejercicio: any) {
     this.router.navigate(['/editarEjercicio', ejercicio.id])
-    
+
   }
 
 
@@ -117,9 +116,8 @@ export class DashboardComponent implements OnInit {
   }
 
   deleteExercise(ejercicio: any) {
-    if(ejercicio != null){
+    if (ejercicio != null) {
       this.db.deleteEjercicio(ejercicio.id);
-      console.log("Ejercicio eliminado!");
       Swal.fire({
         position: 'center',
         icon: 'success',
@@ -128,6 +126,6 @@ export class DashboardComponent implements OnInit {
         timer: 1500
       })
     }
-    
+
   }
 }

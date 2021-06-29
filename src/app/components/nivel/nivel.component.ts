@@ -96,7 +96,6 @@ export class NivelComponent implements OnInit {
         })
       }
     });
-    console.log(this.ejercicios);
   }
 
   getIcon(ejercicio: any) {
@@ -135,14 +134,14 @@ export class NivelComponent implements OnInit {
     this.db.updateEjercicio(ejercicio.id, ejercicio.data);
   }
 
-    
+
   onPageChange(event: PageEvent) {
     const startIndex = event.pageIndex * event.pageSize;
     let endIndex = startIndex + event.pageSize;
     if (endIndex > this.ejercicios.length) {
-       endIndex = this.ejercicios.length
+      endIndex = this.ejercicios.length
     }
     this.pageSlice = this.ejercicios.slice(startIndex, endIndex);
- }
+  }
 
 }

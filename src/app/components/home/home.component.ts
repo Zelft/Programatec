@@ -113,7 +113,6 @@ export class HomeComponent implements OnInit {
    }
 
    buscar(termino: string) {
-      console.log(termino);
       this.searchExercises = [];
       const array = [...this.ejercicios];
       let busqueda = termino.toLowerCase();
@@ -140,14 +139,13 @@ export class HomeComponent implements OnInit {
       this.sortedDates = modifiedDates.slice().sort((a, b) => b.data.created - a.data.created).slice(0, 10);
    }
 
-   subir() {
+   /*subir() {
       this.DATA.forEach(element => {
          element['likes'] = 0;
          element['rating'] = [];
          this.db.createEjercicio(element);
       })
-      console.log(this.DATA);
-   }
+   }*/
 
    DATA =
       [
@@ -3805,7 +3803,5 @@ export class HomeComponent implements OnInit {
             "details": "Realice una función que determine el nodo mayor de un árbol binario desordenado."
          }
       ]
-
-
 }
 

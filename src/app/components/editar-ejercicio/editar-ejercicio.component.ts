@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, FormControl, Validators  } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FirebaseStorageService } from 'src/app/services/storage/firebase-storage.service';
 import { FirestoreService } from 'src/app/services/firestore/firestore.service';
@@ -14,16 +14,16 @@ import Swal from 'sweetalert2';
 })
 export class EditarEjercicioComponent implements OnInit {
 
-  
+
   name = 'Angular';
   exerciseForm: FormGroup = null;
   levels: any = ['1', '2', '3', '4', '5'];
   categories: any = ['Listas, vectores y matrices', 'Condicionales', ' Algoritmos numéricos', 'Árboles'];
-  currentCode : any = 0;
-  currentLevel : any = 0;
-  likes : any = 0;
-  rating : any = [];
-  sent : boolean = false;
+  currentCode: any = 0;
+  currentLevel: any = 0;
+  likes: any = 0;
+  rating: any = [];
+  sent: boolean = false;
   //ejercicios : any[] = [];
 
   //Informacion de Archivo de Subida
@@ -33,16 +33,16 @@ export class EditarEjercicioComponent implements OnInit {
   public URLPublica = '';
   public porcentaje = 0;
   public finalizado = false;
-  ejercicioID : string = '';
+  ejercicioID: string = '';
 
-  constructor(private fb: FormBuilder, private db : FirestoreService, private datePipe: DatePipe, private firebaseStorage: FirebaseStorageService, private activatedRoute: ActivatedRoute) {
+  constructor(private fb: FormBuilder, private db: FirestoreService, private datePipe: DatePipe, private firebaseStorage: FirebaseStorageService, private activatedRoute: ActivatedRoute) {
 
     this.exerciseForm = this.fb.group({
       call: '',
       creator: '',
       details: '',
       examples: this.fb.array([]),
-      code : '',
+      code: '',
       level: [''],
       name: '',
       section: [''],
@@ -59,9 +59,9 @@ export class EditarEjercicioComponent implements OnInit {
     });
   }
 
-  fillCurrentForm(){
-    
-    let ejercicio : any;
+  fillCurrentForm() {
+
+    let ejercicio: any;
     this.db.getEjercicio(this.ejercicioID).subscribe((exe) => {
       ejercicio = exe.payload.data();
       this.exerciseForm.controls['call'].setValue(ejercicio.call);
@@ -80,16 +80,13 @@ export class EditarEjercicioComponent implements OnInit {
         val.controls['call'].setValue(element.call);
         val.controls['comment'].setValue(element.comment);
         val.controls['result'].setValue(element.result);
-      });;
-     // console.log(ejercicio.solution);
+      });
       this.exerciseForm.controls['codeSolution'].setValue(ejercicio.solution.code);
-      //console.log(this.exerciseForm.controls.get('level'));
       exe.payload.data()['solution'].inputs.forEach(element => {
         let val = this.addInput();
-        //console.log(input.controls['inputs']);
         val.controls['name'].setValue(element.name);
         val.controls['type'].setValue(element.type);
-        
+
       });
       exe.payload.data()['solution'].outputs.forEach(element => {
         let val = this.addOutput();
@@ -98,7 +95,7 @@ export class EditarEjercicioComponent implements OnInit {
       });
 
     })
-    
+
   }
   //Examples
   examples(): FormArray {
@@ -134,7 +131,7 @@ export class EditarEjercicioComponent implements OnInit {
   }
 
   addInput() {
-    let val =this.newInput();
+    let val = this.newInput();
     this.inputs().push(val);
     return val;
   }
@@ -156,7 +153,7 @@ export class EditarEjercicioComponent implements OnInit {
   }
 
   addOutput() {
-    let val =this.newOutput();
+    let val = this.newOutput();
     this.outputs().push(val);
     return val;
   }
@@ -168,13 +165,13 @@ export class EditarEjercicioComponent implements OnInit {
   //Submit
   onSubmit() {
 
-    if( (this.sent && this.nombreArchivo!='') || (this.nombreArchivo =='')){
-    let currentDate = new Date();
-    let ejercicio = {
-        call : this.exerciseForm.get('call').value,
-        code : this.currentCode,
-        created :  this.datePipe.transform(currentDate, "yyyy-MM-dd"),
-        creator : this.exerciseForm.get('creator').value,
+    if ((this.sent && this.nombreArchivo != '') || (this.nombreArchivo == '')) {
+      let currentDate = new Date();
+      let ejercicio = {
+        call: this.exerciseForm.get('call').value,
+        code: this.currentCode,
+        created: this.datePipe.transform(currentDate, "yyyy-MM-dd"),
+        creator: this.exerciseForm.get('creator').value,
         details: this.exerciseForm.get('details').value,
         examples: this.exerciseForm.get('examples').value,
         level: this.currentLevel,
@@ -183,71 +180,63 @@ export class EditarEjercicioComponent implements OnInit {
         name: this.exerciseForm.get('name').value,
         section: this.exerciseForm.get('section').value,
         solution: {
-        code : this.exerciseForm.get('codeSolution').value,
-        inputs : this.exerciseForm.get('inputs').value,
-        outputs : this.exerciseForm.get('outputs').value,
+          code: this.exerciseForm.get('codeSolution').value,
+          inputs: this.exerciseForm.get('inputs').value,
+          outputs: this.exerciseForm.get('outputs').value,
         },
-        archivosSubidos : this.URLPublica 
-  }
-  
-  console.log(ejercicio);
-    Swal.fire(
+        archivosSubidos: this.URLPublica
+      }
+
+      Swal.fire(
         'Ejercicio modificado!',
         'El ejercicio se ha actualizado exitosamente!',
         'success'
-    );
-    this.db.updateEjercicio(this.ejercicioID, ejercicio);
-  }else{
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'No has subido el archivo seleccionado. Intenta de nuevo!'
+      );
+      this.db.updateEjercicio(this.ejercicioID, ejercicio);
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'No has subido el archivo seleccionado. Intenta de nuevo!'
       })
-  }
- 
-   /*this.DATA.forEach( element => {
-      element['likes'] = 0;
-      this.db.createEjercicio(element);
-   })*/
-   //console.log(this.DATA);
+    }
   }
 
   /* FUNCIONES DE SUBIDA DE ARCHIVO A FIREBASE*/
 
   public archivoForm = new FormGroup({
-   archivo: new FormControl(null, Validators.required),
- });
+    archivo: new FormControl(null, Validators.required),
+  });
 
-   //Evento que se gatilla cuando el input de tipo archivo cambia
-   public cambioArchivo(event) {
-      if (event.target.files.length > 0) {
-        for (let i = 0; i < event.target.files.length; i++) {
-          this.mensajeArchivo = `Archivo : ${event.target.files[i].name}`;
-          this.nombreArchivo = event.target.files[i].name;
-          this.datosFormulario.delete('archivo');
-          this.datosFormulario.append('archivo', event.target.files[i], event.target.files[i].name)
-        }
-      } else {
-        this.mensajeArchivo = 'No hay un archivo seleccionado';
+  //Evento que se gatilla cuando el input de tipo archivo cambia
+  public cambioArchivo(event) {
+    if (event.target.files.length > 0) {
+      for (let i = 0; i < event.target.files.length; i++) {
+        this.mensajeArchivo = `Archivo : ${event.target.files[i].name}`;
+        this.nombreArchivo = event.target.files[i].name;
+        this.datosFormulario.delete('archivo');
+        this.datosFormulario.append('archivo', event.target.files[i], event.target.files[i].name)
       }
+    } else {
+      this.mensajeArchivo = 'No hay un archivo seleccionado';
     }
-  
-    //Sube el archivo a Cloud Storage
-    public subirArchivo() {
-      let archivo = this.datosFormulario.get('archivo');
-      //console.log(archivo);
-      let referencia = this.firebaseStorage.referenciaCloudStorage(this.nombreArchivo);
-      let tarea = this.firebaseStorage.tareaCloudStorage(this.nombreArchivo, archivo);
-   
-      setTimeout( () => {
-         referencia.getDownloadURL().subscribe((URL) => {
-            this.URLPublica = URL;
-            this.sent = true;
-            console.log(this.URLPublica);
-          });
-       }, 2000 );
-  
-    
-    }
+  }
+
+  //Sube el archivo a Cloud Storage
+  public subirArchivo() {
+    let archivo = this.datosFormulario.get('archivo');
+    let referencia = this.firebaseStorage.referenciaCloudStorage(this.nombreArchivo);
+    let tarea = this.firebaseStorage.tareaCloudStorage(this.nombreArchivo, archivo);
+
+    setTimeout(() => {
+      referencia.getDownloadURL().subscribe((URL) => {
+        this.URLPublica = URL;
+        this.sent = true;
+        console.log(this.URLPublica);
+      });
+    }, 2000);
+
+
+  }
 
 }

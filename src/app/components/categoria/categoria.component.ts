@@ -34,7 +34,6 @@ export class CategoriaComponent implements OnInit {
           });
           this.pageSlice = this.exercises.slice(0, 5);
           this.currentElementCounter = this.exercises.length;
-          console.log(this.pageSlice);
         })
       }
       else if (params.tipoCategoria == "condicionales") {
@@ -51,7 +50,6 @@ export class CategoriaComponent implements OnInit {
           });
           this.pageSlice = this.exercises.slice(0, 5);
           this.currentElementCounter = this.exercises.length;
-          console.log(this.currentElementCounter);
         })
       }
       else if (params.tipoCategoria == "numericos") {
@@ -89,7 +87,7 @@ export class CategoriaComponent implements OnInit {
         })
       }
     });
-    
+
 
   }
 
@@ -115,15 +113,15 @@ export class CategoriaComponent implements OnInit {
     return imgPath;
   }
 
-  
+
   onPageChange(event: PageEvent) {
     const startIndex = event.pageIndex * event.pageSize;
     let endIndex = startIndex + event.pageSize;
     if (endIndex > this.exercises.length) {
-       endIndex = this.exercises.length
+      endIndex = this.exercises.length
     }
     this.pageSlice = this.exercises.slice(startIndex, endIndex);
- }
+  }
 
   getImage(ejercicio: any): string {
     let image = "assets/img/letters/png/" + ejercicio.data.creator[0].toUpperCase() + ".png";
@@ -150,7 +148,6 @@ export class CategoriaComponent implements OnInit {
       }
     })
     this.pageSlice = this.searchExercises.slice(0, 5);
-    console.log(this.pageSlice);
     this.currentElementCounter = this.searchExercises.length;
   }
 

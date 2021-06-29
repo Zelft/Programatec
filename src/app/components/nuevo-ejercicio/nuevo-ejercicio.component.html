@@ -1,16 +1,18 @@
 <div class="container fixedContent">
-
   <h1 class="title-new text-center"> Crear un nuevo ejercicio </h1>
-
-  <form [formGroup]="exerciseForm"  class="needs-validation form-group" novalidate (ngSubmit)="onSubmit()">
+  <form [formGroup]="exerciseForm" novalidate (ngSubmit)="onSubmit()">
     <input type="text" id="name" name="name" placeholder="Nombre del ejercicio" formControlName="name"
-      class="form-control form-group" ngModel required>
+      class="form-control" required [ngClass]="{
+        'is-invalid':invalid(f('name')),'is-valid': valid(f('name'))}">
     <input type="text" id="call" name="call" placeholder="Llamada del ejercicio" formControlName="call"
-      class="form-control mt-2">
+      class="form-control  mt-2" required [ngClass]="{
+        'is-invalid':invalid(f('call')),'is-valid': valid(f('call'))}">
     <input type="text" id="creator" name="creator" placeholder="Creador" formControlName="creator"
-      class="form-control mt-2">
+      class="form-control mt-2" required [ngClass]="{
+        'is-invalid':invalid(f('creator')),'is-valid': valid(f('creator'))}">
     <input type="text" id="details" name="details" placeholder="Detalles del ejercicio" formControlName="details"
-      class="form-control mt-2">
+      class="form-control mt-2" required [ngClass]="{
+        'is-invalid':invalid(f('details')),'is-valid': valid(f('details'))}">
     <div class="row">
       <h2 class="mt-3 titles-array">Ejemplos</h2>
       <button type="button" (click)="addExample()" class="btn bg-success text-white button-add mt-3">Agregar</button>
@@ -18,13 +20,13 @@
     <table class="table table-bordered mt-2" formArrayName="examples">
       <tr *ngFor="let quantity of examples().controls; let i=index" [formGroupName]="i">
         <td>
-          <input type="text" formControlName="call" placeholder="Llamada" class="form-control">
+          <input type="text" formControlName="call" placeholder="Llamada" class="form-control" required>
         </td>
         <td>
           <input type="text" formControlName="comment" placeholder="Comentario" class="form-control">
         </td>
         <td>
-          <input type="text" formControlName="result" placeholder="Resultado" class="form-control">
+          <input type="text" formControlName="result" placeholder="Resultado" class="form-control" required>
         </td>
         <td>
           <button (click)="removeExample(i)" class="btn bg-danger text-white w-100">Eliminar</button>
@@ -33,21 +35,24 @@
     </table>
     <div class="row">
       <div class="col-3">
-        <select class="custom-select dropdown-color text-white" formControlName="level">
+        <select class="custom-select dropdown-color text-white" formControlName="level" required required [ngClass]="{
+          'is-invalid':invalid(f('level')),'is-valid': valid(f('level'))}">
           <option value="" disabled>Nivel de dificultad</option>
           <option *ngFor="let level of levels" [ngValue]="level">Nivel: {{level}}</option>
         </select>
       </div>
       <div class="col-3">
-        <select class="custom-select dropdown-color text-white" formControlName="section">
+        <select class="custom-select dropdown-color text-white" formControlName="section" required required [ngClass]="{
+          'is-invalid':invalid(f('section')),'is-valid': valid(f('section'))}">
           <option value="" disabled>Categoría del ejercicio</option>
           <option *ngFor="let category of categories" [ngValue]="category">{{category}}</option>
         </select>
       </div>
     </div>
     <h2 class="mt-3">Solución del ejercicio</h2>
-
-    <textarea class="form-control"  id="codeSolution" type="text" placeholder="Código de la solución" formControlName="codeSolution" required> </textarea>  
+    <textarea class="form-control" id="codeSolution" type="text" placeholder="Código de la solución"
+      formControlName="codeSolution" required required [ngClass]="{
+        'is-invalid':invalid(f('codeSolution')),'is-valid': valid(f('codeSolution'))}"> </textarea>
     <div class="row">
       <h2 class="mt-3 titles">Entradas del ejercicio</h2>
       <button type="button" (click)="addInput()" class="btn bg-success text-white button-add mt-3">Agregar</button>
@@ -55,10 +60,10 @@
     <table class="table table-bordered mt-2" formArrayName="inputs">
       <tr *ngFor="let quantity of inputs().controls; let i=index" [formGroupName]="i">
         <td>
-          <input type="text" formControlName="name" placeholder="Nombre de la entrada" class="form-control">
+          <input type="text" formControlName="name" placeholder="Nombre de la entrada" class="form-control" required>
         </td>
         <td>
-          <input type="text" formControlName="type" placeholder="Tipo de la entrada" class="form-control">
+          <input type="text" formControlName="type" placeholder="Tipo de la entrada" class="form-control" required>
         </td>
         <td>
           <button (click)="removeInput(i)" class="btn bg-danger text-white w-100">Eliminar</button>
@@ -72,10 +77,10 @@
     <table class="table table-bordered mt-2" formArrayName="outputs">
       <tr *ngFor="let quantity of outputs().controls; let i=index" [formGroupName]="i">
         <td>
-          <input type="text" formControlName="name" placeholder="Nombre de la entrada" class="form-control">
+          <input type="text" formControlName="name" placeholder="Nombre de la salida" class="form-control" required>
         </td>
         <td>
-          <input type="text" formControlName="type" placeholder="Tipo de la entrada" class="form-control">
+          <input type="text" formControlName="type" placeholder="Tipo de la salida" class="form-control" required>
         </td>
         <td>
           <button (click)="removeOutput(i)" class="btn bg-danger text-white w-100">Eliminar</button>
@@ -89,18 +94,19 @@
         </div>
         <label class="file-label">
           <label for="file-upload" class="btn btn-primary mb-3">
-             Cargar Archivo
-             <i class="fas fa-upload ml-2"></i>
-        </label>
-        <input id="file-upload" (change)="cambioArchivo($event)" type="file"/>
-          
+            Cargar Archivo
+            <i class="fas fa-upload ml-2"></i>
+          </label>
+          <input id="file-upload" (change)="cambioArchivo($event)" type="file" />
           <br>
           <span class="titles font-weight-light">
             {{ mensajeArchivo }}
           </span>
         </label>
         <br>
-        <button class="btn btn-primary mt-2" [ngClass]="{'button': true, 'is-success': true, 'is-large': true, 'is-loading': porcentaje > 0 && porcentaje < 100}" [disabled]="!archivoForm.valid && (porcentaje > 0 && porcentaje < 100 ) ">
+        <button class="btn btn-primary mt-2"
+          [ngClass]="{'button': true, 'is-success': true, 'is-large': true, 'is-loading': porcentaje > 0 && porcentaje < 100}"
+          [disabled]="!archivoForm.valid && (porcentaje > 0 && porcentaje < 100 ) ">
           Subir archivo
           <i class="fas fa-cloud-upload-alt ml-1"></i>
         </button>
@@ -115,7 +121,6 @@
   </form>
   <br>
   <br>
-
   <br>
   <br>
 </div>
