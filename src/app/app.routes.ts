@@ -26,10 +26,13 @@ export const ROUTES: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'home' },
     { path: 'sign-in', component: SignInComponent },
     { path: 'sign-up', component: SignUpComponent },
-    { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+    { path: 'dashboard', component: DashboardComponent },
     { path: 'nuevoEjercicio', component: NuevoEjercicioComponent, canActivate: [AuthGuard] },
     { path: 'editarEjercicio/:id', component: EditarEjercicioComponent, canActivate: [AuthGuard] },
     { path: 'forgot-password', component: ForgotPasswordComponent },
     { path: 'email-verification', component: VerifyEmailComponent },
     { path: '**', pathMatch: 'full', redirectTo: 'home' },
 ];
+
+
+//, canActivate: [AuthGuard]
