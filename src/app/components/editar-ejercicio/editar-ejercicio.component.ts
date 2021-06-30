@@ -70,8 +70,9 @@ export class EditarEjercicioComponent implements OnInit {
       this.exerciseForm.controls['details'].setValue(ejercicio.details);
       this.exerciseForm.controls['call'].setValue(ejercicio.call);
       this.exerciseForm.controls['section'].setValue(ejercicio.section);
+      this.exerciseForm.controls['level'].setValue(ejercicio.level);
       this.currentCode = ejercicio.code;
-      this.currentLevel = ejercicio.level;
+      //this.currentLevel = ejercicio.level;
       this.rating = ejercicio.rating;
       this.likes = ejercicio.likes;
       this.exerciseForm.controls['code'].setValue(ejercicio.code);
@@ -174,7 +175,7 @@ export class EditarEjercicioComponent implements OnInit {
         creator: this.exerciseForm.get('creator').value,
         details: this.exerciseForm.get('details').value,
         examples: this.exerciseForm.get('examples').value,
-        level: this.currentLevel,
+        level: this.exerciseForm.get('level').value,
         rating: this.rating,
         likes: this.likes,
         name: this.exerciseForm.get('name').value,

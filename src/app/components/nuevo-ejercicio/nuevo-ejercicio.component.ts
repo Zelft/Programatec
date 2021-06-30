@@ -135,6 +135,7 @@ export class NuevoEjercicioComponent implements OnInit {
                examples: this.exerciseForm.get('examples').value,
                level: this.exerciseForm.get('level').value,
                likes: 0,
+               rating: [],
                name: this.exerciseForm.get('name').value,
                section: this.exerciseForm.get('section').value,
                solution: {
