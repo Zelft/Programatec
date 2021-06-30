@@ -233,6 +233,11 @@ export class EditarEjercicioComponent implements OnInit {
         this.URLPublica = URL;
         this.sent = true;
         console.log(this.URLPublica);
+        Swal.fire(
+          'Archivo subido!',
+          'El ejercicio se ha guardado exitosamente!',
+          'success'
+        );
       });
     }, 2000);
 

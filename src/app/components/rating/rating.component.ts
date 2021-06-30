@@ -19,11 +19,12 @@ export class RatingComponent implements OnInit {
   }
 
   confirmSelection(event: KeyboardEvent) {
-    if (event.keyCode === 13 || event.key === 'Enter') {
+    ////if (event.keyCode === 13 || event.key === 'Enter') {
+      console.log("aa");
       this.isReadonly = false;
       this.ejercicioInfo.data['rating'].push(this.rate);
       this.db.updateEjercicio(this.ejercicioInfo.id, this.ejercicioInfo.data);
-    }
+   // }
   }
 
   displayRating() {
