@@ -1,121 +1,124 @@
 <div class="container fixedContent">
 
-    <h1 class="title-new text-center"> Editar ejercicio </h1>
-  
-    <form [formGroup]="exerciseForm"  class="needs-validation form-group" novalidate (ngSubmit)="onSubmit()">
-      <input type="text" id="name" name="name" placeholder="Nombre del ejercicio" formControlName="name"
-        class="form-control form-group" ngModel required>
-      <input type="text" id="call" name="call" placeholder="Llamada del ejercicio" formControlName="call"
-        class="form-control mt-2">
-      <input type="text" id="creator" name="creator" placeholder="Creador" formControlName="creator"
-        class="form-control mt-2">
-      <input type="text" id="details" name="details" placeholder="Detalles del ejercicio" formControlName="details"
-        class="form-control mt-2">
-      <div class="row">
-        <h2 class="mt-3 titles-array">Ejemplos</h2>
-        <button type="button" (click)="addExample()" class="btn bg-success text-white button-add mt-3">Agregar</button>
+  <h1 class="title-new text-center"> Editar ejercicio </h1>
+
+  <form [formGroup]="exerciseForm" class="needs-validation form-group" novalidate (ngSubmit)="onSubmit()">
+    <input type="text" id="name" name="name" placeholder="Nombre del ejercicio" formControlName="name"
+      class="form-control form-group" ngModel required>
+    <input type="text" id="call" name="call" placeholder="Llamada del ejercicio" formControlName="call"
+      class="form-control mt-2">
+    <input type="text" id="creator" name="creator" placeholder="Creador" formControlName="creator"
+      class="form-control mt-2">
+    <input type="text" id="details" name="details" placeholder="Detalles del ejercicio" formControlName="details"
+      class="form-control mt-2">
+    <div class="row">
+      <h2 class="mt-3 titles-array">Ejemplos</h2>
+      <button type="button" (click)="addExample()" class="btn bg-success text-white button-add mt-3">Agregar</button>
+    </div>
+    <table class="table table-bordered mt-2" formArrayName="examples">
+      <tr *ngFor="let quantity of examples().controls; let i=index" [formGroupName]="i">
+        <td>
+          <input type="text" formControlName="call" placeholder="Llamada" class="form-control">
+        </td>
+        <td>
+          <input type="text" formControlName="comment" placeholder="Comentario" class="form-control">
+        </td>
+        <td>
+          <input type="text" formControlName="result" placeholder="Resultado" class="form-control">
+        </td>
+        <td>
+          <button (click)="removeExample(i)" class="btn bg-danger text-white w-100">Eliminar</button>
+        </td>
+      </tr>
+    </table>
+    <div class="row">
+      <div class="col-3">
+        <select class="custom-select dropdown-color text-white" formControlName="level">
+          <option value="" disabled>Nivel de dificultad</option>
+          <option *ngFor="let level of levels" [ngValue]="level">Nivel: {{level}}</option>
+        </select>
       </div>
-      <table class="table table-bordered mt-2" formArrayName="examples">
-        <tr *ngFor="let quantity of examples().controls; let i=index" [formGroupName]="i">
-          <td>
-            <input type="text" formControlName="call" placeholder="Llamada" class="form-control">
-          </td>
-          <td>
-            <input type="text" formControlName="comment" placeholder="Comentario" class="form-control">
-          </td>
-          <td>
-            <input type="text" formControlName="result" placeholder="Resultado" class="form-control">
-          </td>
-          <td>
-            <button (click)="removeExample(i)" class="btn bg-danger text-white w-100">Eliminar</button>
-          </td>
-        </tr>
-      </table>
-      <div class="row">
-        <div class="col-3">
-          <select class="custom-select dropdown-color text-white" formControlName="level">
-            <option value="" disabled>Nivel de dificultad</option>
-            <option *ngFor="let level of levels" [ngValue]="level">Nivel: {{level}}</option>
-          </select>
+      <div class="col-3">
+        <select class="custom-select dropdown-color text-white" formControlName="section">
+          <option value="" disabled>Categoría del ejercicio</option>
+          <option *ngFor="let category of categories" [ngValue]="category">{{category}}</option>
+        </select>
+      </div>
+    </div>
+    <h2 class="mt-3">Solución del ejercicio</h2>
+
+    <textarea class="form-control" id="codeSolution" type="text" placeholder="Código de la solución"
+      formControlName="codeSolution" required> </textarea>
+    <div class="row">
+      <h2 class="mt-3 titles">Entradas del ejercicio</h2>
+      <button type="button" (click)="addInput()" class="btn bg-success text-white button-add mt-3">Agregar</button>
+    </div>
+    <table class="table table-bordered mt-2" formArrayName="inputs">
+      <tr *ngFor="let quantity of inputs().controls; let i=index" [formGroupName]="i">
+        <td>
+          <input type="text" formControlName="name" placeholder="Nombre de la entrada" class="form-control">
+        </td>
+        <td>
+          <input type="text" formControlName="type" placeholder="Tipo de la entrada" class="form-control">
+        </td>
+        <td>
+          <button (click)="removeInput(i)" class="btn bg-danger text-white w-100">Eliminar</button>
+        </td>
+      </tr>
+    </table>
+    <div class="row">
+      <h2 class="mt-3 titles">Salidas del ejercicio</h2>
+      <button type="button" (click)="addOutput()" class="btn bg-success text-white button-add mt-3">Agregar</button>
+    </div>
+    <table class="table table-bordered mt-2" formArrayName="outputs">
+      <tr *ngFor="let quantity of outputs().controls; let i=index" [formGroupName]="i">
+        <td>
+          <input type="text" formControlName="name" placeholder="Nombre de la entrada" class="form-control">
+        </td>
+        <td>
+          <input type="text" formControlName="type" placeholder="Tipo de la entrada" class="form-control">
+        </td>
+        <td>
+          <button (click)="removeOutput(i)" class="btn bg-danger text-white w-100">Eliminar</button>
+        </td>
+      </tr>
+    </table>
+    <form [formGroup]="archivoForm" (ngSubmit)="subirArchivo()">
+      <div class="file has-name is-boxed">
+        <div class="d-flex flex-row">
+          <h2 class="mt-3">Sube un archivo</h2>
         </div>
-        <div class="col-3">
-          <select class="custom-select dropdown-color text-white" formControlName="section">
-            <option value="" disabled>Categoría del ejercicio</option>
-            <option *ngFor="let category of categories" [ngValue]="category">{{category}}</option>
-          </select>
-        </div>
-      </div>
-      <h2 class="mt-3">Solución del ejercicio</h2>
-  
-      <textarea class="form-control"  id="codeSolution" type="text" placeholder="Código de la solución" formControlName="codeSolution" required> </textarea>  
-      <div class="row">
-        <h2 class="mt-3 titles">Entradas del ejercicio</h2>
-        <button type="button" (click)="addInput()" class="btn bg-success text-white button-add mt-3">Agregar</button>
-      </div>
-      <table class="table table-bordered mt-2" formArrayName="inputs">
-        <tr *ngFor="let quantity of inputs().controls; let i=index" [formGroupName]="i">
-          <td>
-            <input type="text" formControlName="name" placeholder="Nombre de la entrada" class="form-control">
-          </td>
-          <td>
-            <input type="text" formControlName="type" placeholder="Tipo de la entrada" class="form-control">
-          </td>
-          <td>
-            <button (click)="removeInput(i)" class="btn bg-danger text-white w-100">Eliminar</button>
-          </td>
-        </tr>
-      </table>
-      <div class="row">
-        <h2 class="mt-3 titles">Salidas del ejercicio</h2>
-        <button type="button" (click)="addOutput()" class="btn bg-success text-white button-add mt-3">Agregar</button>
-      </div>
-      <table class="table table-bordered mt-2" formArrayName="outputs">
-        <tr *ngFor="let quantity of outputs().controls; let i=index" [formGroupName]="i">
-          <td>
-            <input type="text" formControlName="name" placeholder="Nombre de la entrada" class="form-control">
-          </td>
-          <td>
-            <input type="text" formControlName="type" placeholder="Tipo de la entrada" class="form-control">
-          </td>
-          <td>
-            <button (click)="removeOutput(i)" class="btn bg-danger text-white w-100">Eliminar</button>
-          </td>
-        </tr>
-      </table>
-      <form [formGroup]="archivoForm" (ngSubmit)="subirArchivo()">
-        <div class="file has-name is-boxed">
-          <div class="d-flex flex-row">
-            <h2 class="mt-3">Sube un archivo</h2>
-          </div>
-          <label class="file-label">
-            <label for="file-upload" class="btn btn-primary mb-3">
-               Cargar Archivo
-               <i class="fas fa-upload ml-2"></i>
+        <label class="file-label">
+          <label for="file-upload" class="btn btn-primary mb-3">
+            Cargar Archivo
+            <i class="fas fa-upload ml-2"></i>
           </label>
-          <input id="file-upload" (change)="cambioArchivo($event)" type="file"/>
-            
-            <br>
-            <span class="titles font-weight-light">
-              {{ mensajeArchivo }}
-            </span>
-          </label>
+          <input id="file-upload" (change)="cambioArchivo($event)" type="file" />
+
           <br>
-          <button class="btn btn-primary mt-2" [ngClass]="{'button': true, 'is-success': true, 'is-large': true, 'is-loading': porcentaje > 0 && porcentaje < 100}" [disabled]="!archivoForm.valid && (porcentaje > 0 && porcentaje < 100 ) ">
-            Subir archivo
-            <i class="fas fa-cloud-upload-alt ml-1"></i>
-          </button>
-  
-        </div>
-        <hr>
-      </form>
-      <div style="text-align: center;" class="mb-5">
-        <button type="submit" class="btn btn-success mt-3">Agregar
-          ejercicio</button>
+          <span class="titles font-weight-light">
+            {{ mensajeArchivo }}
+          </span>
+        </label>
+        <br>
+        <button class="btn btn-primary mt-2"
+          [ngClass]="{'button': true, 'is-success': true, 'is-large': true, 'is-loading': porcentaje > 0 && porcentaje < 100}"
+          [disabled]="!archivoForm.valid && (porcentaje > 0 && porcentaje < 100 ) ">
+          Subir archivo
+          <i class="fas fa-cloud-upload-alt ml-1"></i>
+        </button>
+
       </div>
+      <hr>
     </form>
-    <br>
-    <br>
-  
-    <br>
-    <br>
-  </div>
+    <div style="text-align: center;" class="mb-5">
+      <button type="submit" class="btn btn-success mt-3">Agregar
+        ejercicio</button>
+    </div>
+  </form>
+  <br>
+  <br>
+
+  <br>
+  <br>
+</div>
