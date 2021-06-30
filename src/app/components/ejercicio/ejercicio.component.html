@@ -45,9 +45,19 @@
                         </div>
                         <h2 class="card-title mt-3">Código</h2>
                         <div class="card card-details">
-                            <div class="card-body">
+                            <div class="card-body pb-0 mb-0">
+                                <pre class="pb-0 mb-0" style="font-size: larger;">
+                            <code  highlight-js [options]="{}" [lang]="'python'">
+                                {{ejercicio.data.solution.code}}
+                            </code>
+                            </pre>
+                            </div>
+
+                            <!--
+                                <div class="card-body">
                                 <pre><code class="python">{{ejercicio.data.solution.code}}</code></pre>
                             </div>
+                            -->
                         </div>
                         <button class="btn btn-success mt-3" (click)="downloadCode(ejercicio)">Descargar código</button>
                     </div>

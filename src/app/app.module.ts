@@ -36,6 +36,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { EditarEjercicioComponent } from './components/editar-ejercicio/editar-ejercicio.component';
 
 //Formularios
+import { HighlightJsModule } from 'ngx-highlight-js';
 
 
 @NgModule({
@@ -71,7 +72,8 @@ import { EditarEjercicioComponent } from './components/editar-ejercicio/editar-e
     FormsModule,
     ReactiveFormsModule,
     RatingModule.forRoot(),
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    HighlightJsModule 
   ],
   providers: [DatePipe, NgAuthService],
   bootstrap: [AppComponent]
